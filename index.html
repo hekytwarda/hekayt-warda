@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حكاية وردة | A Rose's Tale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Cairo:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- إضافة FontAwesome لزرار الواتساب -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ============================================================
+   TOKENS & ANIMATED BACKGROUND
+   ============================================================ */
+:root {
+  --white: #FFFFFF;
+  --pink: #FBE3EC;
+  --pink-deep: #F2A9C6;
+  --pink-text: #C4557F;
+  --lav: #EAE0F7;
+  --lav-deep: #C6A6E3;
+  --lav-text: #7A55A6;
+  --text: #5B4A66;
+  --text-soft: #9384A4;
+  --text-faint: #C3B7D1;
+  --mint: #C6EAD4;
+  --mint-text: #3E9268;
+  --sun: #FCE7B2;
+  --sun-text: #B4841A;
+
+  --shadow: 0 10px 30px -12px rgba(150, 100, 170, 0.28);
+  --shadow-sm: 0 4px 14px -6px rgba(150, 100, 170, 0.2);
+  --shadow-hover: 0 18px 34px -14px rgba(150, 100, 170, 0.4);
+
+  --radius-xl: 28px;
+  --radius-lg: 22px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+
+  --font-display-ar: 'Baloo Bhaijaan 2', 'Cairo', sans-serif;
+  --font-display-en: 'Fredoka', sans-serif;
+  --font-body-ar: 'Cairo', sans-serif;
+  --font-body-en: 'Nunito', sans-serif;
+
+  --max-width: 1140px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body-ar);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  
+  /* إضافة أنيميشن في الخلفية لألوان حيوية أكتر */
+  background: linear-gradient(-45deg, #FBF6FB, #FBE3EC, #EAE0F7, #fdf6e3);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+html[data-lang="en"] body { font-family: var(--font-body-en); }
+
+h1, h2, h3 {
+  font-family: var(--font-display-ar);
+  font-weight: 700;
+  margin: 0;
+  color: var(--lav-text);
+}
+html[data-lang="en"] h1,
+html[data-lang="en"] h2,
+html[data-lang="en"] h3 {
+  font-family: var(--font-display-en);
+  font-weight: 600;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ============================================================
+   ANNOUNCEMENT BAR
+   ============================================================ */
+.announcement-bar {
+  background: linear-gradient(135deg, var(--pink-text), var(--lav-text));
+  color: #fff;
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(251, 246, 251, 0.88);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.15;
+}
+.brand::before { content: "🌸"; font-size: 1.5rem; }
+.brand-ar { font-family: var(--font-display-ar); font-size: 1.3rem; font-weight: 700; color: var(--lav-text); display: block; }
+html[data-lang="en"] .brand-ar { display: none; }
+.brand-en { font-family: var(--font-display-en); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.03em; color: var(--pink-text); display: block; }
+html[data-lang="ar"] .brand-en { font-size: 0.65rem; }
+
+.main-nav {
+  display: flex;
+  gap: 8px;
+  font-size: 0.92rem;
+}
+.main-nav a {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: var(--text-soft);
+  transition: background 0.2s, color 0.2s;
+}
+.main-nav a:hover {
+  background: var(--lav);
+  color: var(--lav-text);
+}
+
+.lang-toggle {
+  background: var(--white);
+  border: none;
+  color: var(--lav-text);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s, transform 0.15s;
+}
+.lang-toggle:hover { box-shadow: var(--shadow); }
+.lang-toggle:active { transform: scale(0.95); }
+
+@media (max-width: 768px) {
+  .main-nav { display: none; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero { position: relative; padding: 70px 24px 90px; text-align: center; overflow: hidden; }
+.hero-motif { color: var(--pink-deep); opacity: 0.55; margin-bottom: 8px; }
+.motif-row { width: 100%; max-width: 380px; height: 40px; margin: 0 auto; display: block; }
+.hero-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 2; }
+.hero-title { display: flex; flex-direction: column; gap: 2px; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.3; margin-bottom: 15px; }
+.hero-title span:last-child { color: var(--pink-text); }
+.hero-sub { font-size: 1.08rem; color: var(--text-soft); font-weight: 600; max-width: 480px; margin: 0 auto 20px; }
+html[data-lang="en"] .hero-sub { font-weight: 400; }
+
+/* Gift Badge (عنصر الساسبنس) */
+.hero-gift-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.7);
+  border: 2px dashed var(--pink-deep);
+  color: var(--text);
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin: 0 auto 34px;
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-cta { display: inline-block; background: linear-gradient(135deg, var(--lav-deep), var(--pink-deep)); color: #fff; padding: 15px 38px; border-radius: 999px; font-weight: 700; font-size: 1rem; box-shadow: 0 8px 18px -6px rgba(180, 100, 160, 0.55); transition: box-shadow 0.2s, transform 0.2s; }
+.hero-cta:hover { box-shadow: 0 10px 24px -6px rgba(180, 100, 160, 0.7); transform: translateY(-2px); }
+
+/* ============================================================
+   PRODUCTS & FILTERS
+   ============================================================ */
+.products-section { max-width: var(--max-width); margin: 0 auto; padding: 20px 24px 100px; }
+.section-head { text-align: center; max-width: 560px; margin: 0 auto 46px; }
+.section-head h2 { font-size: 2rem; margin-bottom: 12px; }
+.section-head p { color: var(--text-soft); font-weight: 600; font-size: 1rem; }
+html[data-lang="en"] .section-head p { font-weight: 400; }
+
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.filter-btn {
+  background: var(--white);
+  color: var(--text-soft);
+  border: 2px solid transparent;
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+.filter-btn:hover { border-color: var(--lav-deep); color: var(--lav-text); }
+.filter-btn.active { background: var(--lav-deep); color: #fff; box-shadow: var(--shadow); }
+
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px; }
+.product-card { background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+.product-card-img { aspect-ratio: 3 / 4; overflow: hidden; background: linear-gradient(135deg, var(--lav), var(--pink)); }
+.product-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.product-card-body { padding: 20px 22px 22px; }
+.product-card-body h3 { font-size: 1.2rem; margin-bottom: 12px; }
+.swatch-row { display: flex; gap: 8px; margin-bottom: 18px; }
+.mini-swatch { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 0 0 1px var(--text-faint); display: inline-block; }
+.card-details-btn { width: 100%; background: var(--lav); border: none; color: var(--lav-text); padding: 11px; font-weight: 800; font-size: 0.9rem; border-radius: 999px; transition: background 0.2s, color 0.2s; }
+.card-details-btn:hover { background: var(--lav-deep); color: #fff; }
+
+/* ============================================================
+   REVIEWS (IMAGE BASED)
+   ============================================================ */
+.reviews-section { padding: 80px 24px; }
+.reviews-inner { max-width: var(--max-width); margin: 0 auto; }
+.reviews-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 24px; 
+  margin-top: 40px; 
+}
+
+/* كروت السكرين شوتس */
+.review-image-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 10px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  border: 2px dashed var(--pink-deep);
+}
+
+.review-image-card img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+/* تأثير تحريك خفيف لما تقفي بالماوس على السكرين شوت */
+.review-image-card:hover {
+  transform: scale(1.03) rotate(-1deg);
+  box-shadow: var(--shadow-hover);
+  border-style: solid;
+}
+
+/* النص اللي بيظهر لو مفيش صورة */
+.review-placeholder-text {
+  color: var(--text-soft);
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-section { max-width: 800px; margin: 0 auto; padding: 80px 24px; }
+.faq-list { margin-top: 40px; }
+.faq-item { background: var(--white); border-radius: var(--radius-md); margin-bottom: 16px; box-shadow: var(--shadow-sm); overflow: hidden; }
+.faq-q { width: 100%; text-align: start; padding: 20px; background: none; border: none; font-size: 1.1rem; font-weight: 700; color: var(--lav-text); display: flex; justify-content: space-between; align-items: center; }
+.faq-q i { transition: transform 0.3s ease; color: var(--pink-text); }
+.faq-q.active i { transform: rotate(180deg); }
+.faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; font-weight: 500; color: var(--text); }
+.faq-q.active + .faq-a { padding: 0 20px 20px; max-height: 300px; }
+
+/* ============================================================
+   ABOUT & CONTACT
+   ============================================================ */
+.about-section { padding: 60px 24px; }
+.about-inner { max-width: 640px; margin: 0 auto; text-align: center; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(5px); border-radius: var(--radius-xl); box-shadow: var(--shadow); padding: 46px 40px; border: 1px solid rgba(255,255,255,0.5); }
+.about-inner h2 { font-size: 1.85rem; margin-bottom: 22px; }
+.about-inner p { color: var(--text); font-weight: 500; margin-bottom: 14px; }
+.about-note { margin-top: 26px; padding: 16px 20px; background: linear-gradient(135deg, var(--lav) 0%, var(--pink) 100%); border-radius: var(--radius-md); text-align: start; font-size: 0.95rem; }
+.about-note p { margin: 0; color: var(--text); }
+.about-note strong { color: var(--pink-text); }
+
+.contact-section { padding: 70px 24px 90px; text-align: center; }
+.contact-inner { max-width: 500px; margin: 0 auto; }
+.contact-inner h2 { font-size: 1.85rem; margin-bottom: 14px; }
+.contact-inner p { color: var(--text-soft); font-weight: 600; margin-bottom: 26px; }
+html[data-lang="en"] .contact-inner p { font-weight: 400; }
+.instagram-btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--pink-deep), var(--sun)); color: #6b3350; padding: 15px 32px; border-radius: 999px; font-weight: 800; box-shadow: 0 8px 18px -6px rgba(242, 169, 198, 0.6); transition: box-shadow 0.2s, transform 0.2s; }
+.instagram-btn:hover { box-shadow: 0 10px 24px -6px rgba(242, 169, 198, 0.75); transform: translateY(-2px); }
+
+/* ============================================================
+   WHATSAPP FLOATING BUTTON
+   ============================================================ */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  inline-end: 24px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
+  z-index: 100;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 20px rgba(37, 211, 102, 0.4);
+  color: #FFF;
+}
+
+/* ============================================================
+   FOOTER & MODAL
+   ============================================================ */
+.site-footer { text-align: center; padding: 30px; font-size: 0.85rem; font-weight: 600; color: var(--text-faint); }
+.modal-overlay { position: fixed; inset: 0; background: rgba(91, 74, 102, 0.45); display: none; align-items: center; justify-content: center; padding: 24px; z-index: 100; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--white); max-width: 880px; width: 100%; max-height: 88vh; overflow-y: auto; position: relative; border-radius: var(--radius-xl); box-shadow: var(--shadow); animation: pop 0.22s ease; }
+@keyframes pop { from { opacity: 0; transform: translateY(-8px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.modal-close { position: absolute; top: 16px; inset-inline-end: 16px; background: var(--white); border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 1.4rem; line-height: 1; color: var(--text); box-shadow: var(--shadow-sm); z-index: 5; }
+.modal-close:hover { background: var(--pink); color: var(--pink-text); }
+.modal-content { display: grid; grid-template-columns: 1fr 1fr; }
+@media (max-width: 720px) { .modal-content { grid-template-columns: 1fr; } }
+.modal-gallery { background: linear-gradient(135deg, var(--lav), var(--pink)); display: flex; flex-direction: column; overflow-y: auto; max-height: 88vh; border-radius: var(--radius-xl) 0 0 var(--radius-xl); }
+@media (max-width: 720px) { .modal-gallery { border-radius: var(--radius-xl) var(--radius-xl) 0 0; } }
+.modal-img-frame { padding: 22px; }
+.modal-img-frame img { border-radius: var(--radius-md); }
+.modal-info { padding: 40px 34px; }
+.modal-info h2 { font-size: 1.55rem; margin-bottom: 6px; }
+.modal-color-name { color: var(--pink-text); font-weight: 700; font-size: 0.9rem; margin: 0 0 20px; }
+.modal-desc { color: var(--text); font-weight: 500; margin-bottom: 24px; font-size: 0.98rem; }
+.modal-field { margin-bottom: 22px; }
+.modal-field-label { display: block; font-weight: 800; font-size: 0.85rem; color: var(--lav-text); margin-bottom: 10px; }
+.modal-field-text { margin: 0; color: var(--text); font-weight: 600; }
+.color-list { display: flex; gap: 10px; }
+.color-chip { width: 32px; height: 32px; border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 0 1px var(--text-faint); transition: box-shadow 0.2s; }
+.color-chip.active { box-shadow: 0 0 0 2px var(--lav-deep); }
+.size-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.size-chip { background: var(--bg-2); padding: 7px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; color: var(--text); }
+.modal-order-btn { display: block; text-align: center; background: linear-gradient(135deg, var(--lav-deep), var(--pink-deep)); color: #fff; padding: 15px; border-radius: 999px; font-weight: 800; box-shadow: 0 8px 18px -6px rgba(180, 100, 160, 0.5); transition: box-shadow 0.2s, transform 0.2s; }
+.modal-order-btn:hover { box-shadow: 0 10px 22px -6px rgba(180, 100, 160, 0.65); transform: translateY(-1px); }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+:focus-visible { outline: 2px solid var(--lav-deep); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<div class="announcement-bar" data-key="announcement">
+  أهلاً بيكي في حكاية وردة! متاحين لاستقبال أوردراتكم بكل حب 🌸
+</div>
+
+<!-- Decorative granny-square motif strip -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="granny-flower" viewBox="0 0 40 40">
+      <g fill="currentColor">
+        <circle cx="20" cy="20" r="4"/><circle cx="12" cy="12" r="4.5"/><circle cx="28" cy="12" r="4.5"/>
+        <circle cx="12" cy="28" r="4.5"/><circle cx="28" cy="28" r="4.5"/><circle cx="20" cy="8" r="4.5"/>
+        <circle cx="20" cy="32" r="4.5"/><circle cx="8" cy="20" r="4.5"/><circle cx="32" cy="20" r="4.5"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#top" class="brand">
+      <span class="brand-inner">
+        <span class="brand-ar">حكاية وردة</span>
+        <span class="brand-en">A Rose's Tale</span>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a href="#products" data-key="nav.shop">المنتجات</a>
+      <a href="#reviews" data-key="nav.reviews">آراء العملاء</a>
+      <a href="#faq" data-key="nav.faq">أسئلة شائعة</a>
+      <a href="#about" data-key="nav.about">حكايتنا</a>
+    </nav>
+    <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+      <span class="lang-current">EN</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-motif" aria-hidden="true">
+      <svg viewBox="0 0 400 60" class="motif-row">
+        <use href="#granny-flower" x="0" y="10" width="40" height="40"/><use href="#granny-flower" x="40" y="10" width="40" height="40"/>
+        <use href="#granny-flower" x="80" y="10" width="40" height="40"/><use href="#granny-flower" x="120" y="10" width="40" height="40"/>
+        <use href="#granny-flower" x="160" y="10" width="40" height="40"/><use href="#granny-flower" x="200" y="10" width="40" height="40"/>
+        <use href="#granny-flower" x="240" y="10" width="40" height="40"/><use href="#granny-flower" x="280" y="10" width="40" height="40"/>
+        <use href="#granny-flower" x="320" y="10" width="40" height="40"/><use href="#granny-flower" x="360" y="10" width="40" height="40"/>
+      </svg>
+    </div>
+    <div class="hero-inner">
+      <h1 class="hero-title">
+        <span data-key="hero.title.line1">كل قطعة</span>
+        <span data-key="hero.title.line2">حكايتها اتحاكت بإيد</span>
+      </h1>
+      <p class="hero-sub" data-key="hero.sub">شنط وإكسسوارات كروشيه، مصنوعة قطعة قطعة بحب واهتمام بالتفاصيل</p>
+      
+      <!-- Gift Badge -->
+      <div class="hero-gift-badge" data-key="hero.gift">
+        🎁 كل أوردر هيكون معاه هدية بسيطة مختلفة كنوع من الحب والتشويق والساسبنس زي ما بيقولو!
+      </div>
+      <br>
+      <a href="#products" class="hero-cta" data-key="hero.cta">اتفرجي على المنتجات</a>
+    </div>
+  </section>
+
+  <section id="products" class="products-section">
+    <div class="section-head">
+      <h2 data-key="products.heading">المنتجات</h2>
+      <p data-key="products.sub">كل قطعة بتتعمل خصيصاً لما تطلبيها — استحملينا شوية وقت عشان تطلع زي ما تحلمي بيها</p>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="filters" id="categoryFilters">
+      <button class="filter-btn active" data-filter="all" data-key="filter.all">الكل</button>
+      <button class="filter-btn" data-filter="bags" data-key="filter.bags">شنط</button>
+      <button class="filter-btn" data-filter="amigurumi" data-key="filter.amigurumi">أميجورومي</button>
+      <button class="filter-btn" data-filter="accessories" data-key="filter.accessories">إكسسوارات وملابس</button>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+      <!-- Product cards injected by JS -->
+    </div>
+  </section>
+
+  <!-- REVIEWS SECTION -->
+  <section id="reviews" class="reviews-section">
+    <div class="reviews-inner">
+      <div class="section-head">
+        <h2 data-key="reviews.heading">بيقولوا عننا إيه؟</h2>
+        <p data-key="reviews.sub">شهادات وسكرينات بنعتز بيها من عملاء حكاية وردة 🌸</p>
+      </div>
+      <div class="reviews-grid">
+        
+        <div class="review-image-card">
+          <!-- <img src="images/review-1.jpg" alt="رأي عميل"> -->
+          <span class="review-placeholder-text">مكان سكرين شوت 1</span>
+        </div>
+        
+        <div class="review-image-card">
+          <!-- <img src="images/review-2.jpg" alt="رأي عميل"> -->
+          <span class="review-placeholder-text">مكان سكرين شوت 2</span>
+        </div>
+        
+        <div class="review-image-card">
+          <!-- <img src="images/review-3.jpg" alt="رأي عميل"> -->
+          <span class="review-placeholder-text">مكان سكرين شوت 3</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faq" class="faq-section">
+    <div class="section-head">
+      <h2 data-key="faq.heading">أسئلة شائعة</h2>
+      <p data-key="faq.sub">كل اللي محتاجة تعرفيه عن طلباتك وطريقة العناية بيها</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" data-key="faq.q1">إزاي أحافظ على الشنط الكروشيه وأنظفها؟ <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a" data-key="faq.a1">عشان الشنط بتاعتنا متدعمة بشبك بلاستيك عشان تحافظ على هيكلها وتفضل ماسكة نفسها، بننصح إنها تتنظف تنظيف جاف (Dry Clean) أو تتنظف بمسحة خفيفة بقماشة مبللة، وبلاش تتغمر في الماية خالص عشان الشبك ميتأثرش.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-key="faq.q2">إزاي أغسل الملابس وعرائس الأميجورومي؟ <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a" data-key="faq.a2">الملابس (زي الكاردجان والكوفيات) والعرائس اللي بنستخدم فيها خيوط بجودة عالية زي هيمالايا وأليز، تقدري تغسليها على البارد برفق جداً، وتتفرد على سطح مسطح عشان تنشف من غير ما تتمط أو شكلها يتغير.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-key="faq.q3">إيه نظام الديبوزيت؟ <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a" data-key="faq.a3">لأن كل قطعة بتتعمل مخصوص ليكي، بنطلب ديبوزيت يغطي تمن الخامات مقدماً لتأكيد الأوردر، وباقي المبلغ بيتدفع وقت الاستلام.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="about-inner">
+      <h2 data-key="about.heading">حكايتنا</h2>
+      <p data-key="about.p1">"حكاية وردة" بدأت كشغف وهواية لسنين بالكروشيه، وبقت مشروع بيحول الخيط لقطع تلبسيها أو تاخديها معاكي في كل حتة.</p>
+      <p data-key="about.p2">كل قطعة بتتعمل بإيد، غرزة ورا غرزة، وده بياخد وقت — عشان كده كل أوردر ليه مدة تسليم مختلفة حسب حجم الشغل.</p>
+      <div class="about-note">
+        <p data-key="about.deposit"><strong data-key="about.deposit.label">مهم:</strong> بنطلب ديبوزيت بتمن الخامات مقدماً لكل أوردر، والباقي عند التسليم.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-inner">
+      <h2 data-key="contact.heading">عايزة تطلبي قطعة؟</h2>
+      <p data-key="contact.sub">ابعتيلنا رسالة بسكرين على إنستجرام أو واتساب بالمنتج واللون والمقاس اللي يعجبك، وهنرد عليكي بالسعر وميعاد التسليم (الرد على طلباتكم هيكون من 3 إلى 8 بليل بإذن الله)</p>
+      <a href="https://instagram.com/hekayt_warda" target="_blank" rel="noopener" class="instagram-btn">
+        <i class="fab fa-instagram"></i>
+        <span>hekayt_warda</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p><span class="brand-ar">حكاية وردة</span> · <span class="brand-en">A Rose's Tale</span></p>
+</footer>
+
+<!-- WhatsApp Floating Button (غيري الرقم بالرقم بتاعك) -->
+<a href="https://wa.me/201119993467" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Product detail modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="productModal" role="dialog" aria-modal="true">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// PRODUCT DATA (بدون أسعار)
+// ============================================================
+const PRODUCTS = [
+  {
+    id: "flower-bag-01",
+    category: "bags",
+    name: { ar: "شنطة الورود", en: "Flower Bag" },
+    description: {
+      ar: "شنطة كروشيه بتصميم ورود بارزة، بسلسلة قابلة للتغيير. مدعمة من الداخل بشبك بلاستيك للحفاظ على شكلها وقوامها. كل وردة بتتحاك لوحدها وتتركب بعدين.",
+      en: "A crochet bag with raised flower detailing and an adjustable metal chain. Reinforced internally to maintain its shape."
+    },
+    madeToOrder: true,
+    turnaround: { ar: "أسبوع إلى أسبوعين", en: "1–2 weeks" },
+    sizes: [
+      { label: { ar: "سمول", en: "Small" }, dims: "18 × 12 cm" },
+      { label: { ar: "لارج", en: "Large" }, dims: "24 × 16 cm" }
+    ],
+    colors: [
+      { name: { ar: "أحمر وأبيض", en: "Red & White" }, swatch: "#A8283F", images: ["images/flower-bag-red-1.jpg"] },
+      { name: { ar: "بني ورمادي", en: "Brown & Grey" }, swatch: "#6B5A4A", images: ["images/flower-bag-brown-1.jpg", "images/flower-bag-brown-2.jpg"] },
+      { name: { ar: "أزرق وأبيض", en: "Blue & White" }, swatch: "#1F3A5F", images: ["images/flower-bag-blue-1.jpg"] }
+    ]
+  },
+  {
+    id: "berry-bag-01",
+    category: "bags",
+    name: { ar: "شنطة التوت", en: "Berry Bag" },
+    description: {
+      ar: "شنطة كروشيه بشكل مثلث ودراع طويل، بغرزة الجرانى سكوير الكلاسيكية. مدعمة بشبك بلاستيك للحفاظ على قوام الشنطة المربع وثبات الغرز.",
+      en: "A triangular crochet crossbody bag in the classic granny-square stitch."
+    },
+    madeToOrder: true,
+    turnaround: { ar: "أسبوع إلى أسبوعين", en: "1–2 weeks" },
+    sizes: [
+      { label: { ar: "سمول", en: "Small" }, dims: "18 × 12 cm" },
+      { label: { ar: "لارج", en: "Large" }, dims: "24 × 16 cm" }
+    ],
+    colors: [
+      { name: { ar: "كريمي وبني وأحمر غامق", en: "Cream, Tan & Burgundy" }, swatch: "#8B3A3A", images: ["images/berry-bag-1.jpg", "images/berry-bag-2.jpg", "images/berry-bag-3.jpg"] }
+    ]
+  },
+  {
+    id: "wristlet-01",
+    category: "accessories",
+    name: { ar: "معصم اليد الكروشيه", en: "Crochet Wristlet Cuff" },
+    description: {
+      ar: "معصم كروشيه بغرزة سيمبل وشيك، بيتعمل نسخة شتوي (خيط أتقل) أو صيفي (خيط أخف).",
+      en: "A crochet wristlet cuff, made in a winter version or summer version."
+    },
+    madeToOrder: true,
+    turnaround: { ar: "أسبوع", en: "one week" },
+    standardSize: { ar: "مقاسه حسب معصم ايدك مخصوص على قدك", en: "Your own size" },
+    colors: [
+      { name: { ar: "أسود بلآلئ", en: "Black with Pearls" }, swatch: "#1A1A1A", images: ["images/wristlet-black-1.jpg", "images/wristlet-black-2.jpg"] },
+      { name: { ar: "كريمي من غير زراير", en: "Cream, Plain" }, swatch: "#EDE6D6", images: ["images/wristlet-white-1.jpg"] }
+    ]
+  },
+  {
+    id: "duck-keychain-01",
+    category: "amigurumi",
+    name: { ar: "كتكوت كروشيه", en: "Crochet Duck" },
+    description: {
+      ar: "كتكوت أميجورومي كروشيه صغير بطاقية قابلة للخلع، مصنوع من خيوط ناعمة وعالية الجودة.",
+      en: "A small crochet amigurumi duck wearing a little hat."
+    },
+    madeToOrder: true,
+    turnaround: { ar: "3 إلى 5 أيام", en: "3–5 days" },
+    standardSize: { ar: "بحجم كف اليد تقريباً", en: "Roughly palm-sized" },
+    colors: [
+      { name: { ar: "أصفر فاتح", en: "Pale Yellow" }, swatch: "#F3E9B8", images: ["images/duck-1.jpg", "images/duck-2.jpg"] }
+    ]
+  },
+  {
+    id: "doll-bowclip-01",
+    category: "amigurumi",
+    name: { ar: "عروسة وتوكة فيونكة", en: "Doll & Bow Hair Clip" },
+    description: {
+      ar: "عروسة أميجورومي كروشيه صغيرة بخيوط ناعمة، معاها توكة شعر على شكل فيونكة.",
+      en: "A small amigurumi crochet doll paired with a bow-shaped hair clip."
+    },
+    madeToOrder: true,
+    turnaround: { ar: "أسبوع تقريباً", en: "About a week" },
+    standardSize: { ar: "العروسة بحجم كف اليد تقريباً", en: "Doll is roughly palm-sized" },
+    colors: [
+      { name: { ar: "أزرق فاتح وبني", en: "Light Blue & Brown" }, swatch: "#A9C4DE", images: ["images/doll-bow-1.jpg", "images/doll-bow-2.jpg", "images/doll-bow-3.jpg"] }
+    ]
+  }
+];
+</script>
+
+<script>
+// ============================================================
+// TRANSLATIONS
+// ============================================================
+const TRANSLATIONS = {
+  ar: {
+    "announcement": "أهلاً بيكي في حكاية وردة! متاحين لاستقبال أوردراتكم بكل حب 🌸",
+    "nav.shop": "المنتجات",
+    "nav.reviews": "آراء العملاء",
+    "nav.faq": "أسئلة شائعة",
+    "nav.about": "حكايتنا",
+    "hero.title.line1": "كل قطعة",
+    "hero.title.line2": "حكايتها اتحاكت بإيد",
+    "hero.sub": "شنط وإكسسوارات كروشيه، مصنوعة قطعة قطعة بحب واهتمام بالتفاصيل",
+    "hero.gift": "🎁 كل أوردر هيكون معاه هدية بسيطة مختلفة كنوع من التشويق والساسبنس!",
+    "hero.cta": "اتفرجي على منتجاتنا",
+    "products.heading": "المنتجات",
+    "products.sub": "كل قطعة بتتعمل خصيصاً لما تطلبيها — استحملينا شوية وقت عشان تطلع زي ما تحلمي بيها",
+    "filter.all": "الكل",
+    "filter.bags": "شنط",
+    "filter.amigurumi": "أميجورومي",
+    "filter.accessories": "إكسسوارات وملابس",
+    "product.viewDetails": "التفاصيل",
+    "product.colors": "الألوان المتاحة",
+    "product.sizes": "المقاسات",
+    "product.turnaround": "مدة التسليم",
+    "product.standardSize": "المقاس",
+    "product.orderBtn": "اطلبي على إنستجرام",
+    "reviews.heading": "بيقولوا عننا إيه؟",
+    "reviews.sub": "شهادات وسكرينات بنعتز بيها من عملاء حكاية وردة 🌸",
+    "faq.heading": "أسئلة شائعة",
+    "faq.sub": "كل اللي محتاجة تعرفيه عن طلباتك وطريقة العناية بيها",
+    "faq.q1": "إزاي أحافظ على الشنط الكروشيه وأنظفها؟",
+    "faq.a1": "عشان الشنط بتاعتنا متدعمة بشبك بلاستيك عشان تحافظ على هيكلها وتفضل ماسكة نفسها، بننصح إنها تتنظف تنظيف جاف (Dry Clean) أو تتنظف بمسحة خفيفة بقماشة مبللة، وبلاش تتغمر في الماية خالص عشان الشبك ميتأثرش.",
+    "faq.q2": "إزاي أغسل الملابس وعرائس الأميجورومي؟",
+    "faq.a2": "الملابس (زي الكاردجان والكوفيات) والعرائس اللي بنستخدم فيها خيوط بجودة عالية زي هيمالايا وأليز، تقدري تغسليها على البارد برفق جداً، وتتفرد على سطح مسطح عشان تنشف من غير ما تتمط أو شكلها يتغير.",
+    "faq.q3": "إيه نظام الديبوزيت؟",
+    "faq.a3": "لأن كل قطعة بتتعمل مخصوص ليكي، بنطلب ديبوزيت يغطي تمن الخامات مقدماً لتأكيد الأوردر، وباقي المبلغ بيتدفع وقت الاستلام.",
+    "about.heading": "حكايتنا",
+    "about.p1": "\"حكاية وردة\" بدأت كشغف وهواية لسنين بالكروشيه، وبقت مشروع بيحول الخيط لقطع تلبسيها أو تاخديها معاكي في كل حتة.",
+    "about.p2": "كل قطعة بتتعمل بإيد، غرزة ورا غرزة، وده بياخد وقت — عشان كده كل أوردر ليه مدة تسليم مختلفة حسب حجم الشغل.",
+    "about.deposit.label": "مهم:",
+    "about.deposit": "بنطلب ديبوزيت بتمن الخامات مقدماً لكل أوردر، والباقي عند التسليم.",
+    "contact.heading": "عايزة تطلبي قطعة؟",
+    "contact.sub": "ابعتيلنا رسالة بسكرين على إنستجرام أو واتساب بالمنتج واللون والمقاس اللي يعجبك، وهنرد عليكي بالسعر وميعاد التسليم"
+  },
+  en: {
+    "announcement": "Welcome to A Rose's Tale! We are ready to receive your lovely orders 🌸",
+    "nav.shop": "Shop",
+    "nav.reviews": "Reviews",
+    "nav.faq": "FAQ",
+    "nav.about": "Our Story",
+    "hero.title.line1": "Every piece",
+    "hero.title.line2": "has a story stitched by hand",
+    "hero.sub": "Crochet bags and accessories, made one piece at a time with care for every detail",
+    "hero.gift": "🎁 Every order comes with a small surprise gift for a little suspense!",
+    "hero.cta": "Browse the shop",
+    "products.heading": "Shop",
+    "products.sub": "Every piece is made to order once you request it — thank you for your patience",
+    "filter.all": "All",
+    "filter.bags": "Bags",
+    "filter.amigurumi": "Amigurumi",
+    "filter.accessories": "Accessories & Clothes",
+    "product.viewDetails": "Details",
+    "product.colors": "Available colors",
+    "product.sizes": "Sizes",
+    "product.turnaround": "Turnaround time",
+    "product.standardSize": "Size",
+    "product.orderBtn": "Order on Instagram",
+    "reviews.heading": "What they say",
+    "reviews.sub": "Screenshots and testimonials we cherish from our lovely clients 🌸",
+    "faq.heading": "FAQ",
+    "faq.sub": "Everything you need to know about your orders and how to care for them",
+    "faq.q1": "How do I care for my crochet bag?",
+    "faq.a1": "Since our bags are reinforced with a plastic mesh base to keep their shape, we recommend dry cleaning or a light wipe down. Do not submerge in water.",
+    "faq.q2": "How do I wash clothes and amigurumi dolls?",
+    "faq.a2": "Items made with high-quality yarns like Himalaya and Alize should be washed gently in cold water and laid flat to dry to maintain their shape.",
+    "faq.q3": "What is the deposit policy?",
+    "faq.a3": "Because each item is made to order, we require a deposit covering the cost of materials upfront, with the rest due upon delivery.",
+    "about.heading": "Our Story",
+    "about.p1": "A Rose's Tale began as a simple love for crochet, and grew into a project that turns yarn into pieces you can wear or carry with you anywhere.",
+    "about.p2": "Every piece is stitched by hand, one thread at a time — that's why each order has a different turnaround time.",
+    "about.deposit.label": "Note:",
+    "about.deposit": "We ask for a deposit covering material costs upfront for every order, with the rest due on delivery.",
+    "contact.heading": "Ready to order?",
+    "contact.sub": "Message us on Instagram or WhatsApp with the product, color and size you'd like, and we'll reply with the details!"
+  }
+};
+
+let currentLang = "ar";
+function t(key) { return TRANSLATIONS[currentLang][key] || key; }
+
+function applyTranslations() {
+  document.querySelectorAll("[data-key]").forEach(el => {
+    const key = el.getAttribute("data-key");
+    if(el.tagName === 'BUTTON' && el.querySelector('i')) {
+      const icon = el.querySelector('i').outerHTML;
+      el.innerHTML = t(key) + " " + icon;
+    } else {
+      el.textContent = t(key);
+    }
+  });
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+  document.documentElement.setAttribute("data-lang", currentLang);
+  document.getElementById("langToggle").querySelector(".lang-current").textContent = currentLang === "ar" ? "EN" : "AR";
+}
+
+function switchLang(lang) {
+  currentLang = lang;
+  applyTranslations();
+  renderProducts();
+  if (typeof refreshOpenModal === "function") refreshOpenModal();
+}
+</script>
+
+<script>
+// ============================================================
+// APP LOGIC (Filters & Modals & WhatsApp Auto-Message)
+// ============================================================
+let openProductId = null;
+let openColorIndex = 0;
+let openSizeIndex = 0;
+let currentFilter = "all";
+
+function renderProducts() {
+  const grid = document.getElementById("productGrid");
+  grid.innerHTML = "";
+  const filteredProducts = PRODUCTS.filter(p => currentFilter === "all" || p.category === currentFilter);
+
+  filteredProducts.forEach(product => {
+    const card = document.createElement("article");
+    card.className = "product-card";
+    card.tabIndex = 0;
+    
+    const coverImg = product.colors[0].images[0];
+    const name = product.name[currentLang];
+
+    card.innerHTML = `
+      <div class="product-card-img"><img src="${coverImg}" alt="${name}" loading="lazy"></div>
+      <div class="product-card-body">
+        <h3>${name}</h3>
+        <div class="swatch-row">
+          ${product.colors.map(c => `<span class="mini-swatch" style="background:${c.swatch}" title="${c.name[currentLang]}"></span>`).join("")}
+        </div>
+        <button class="card-details-btn">${currentLang === "ar" ? "التفاصيل" : "Details"}</button>
+      </div>
+    `;
+    card.addEventListener("click", () => openModal(product.id));
+    grid.appendChild(card);
+  });
+}
+
+function openModal(productId) {
+  openProductId = productId;
+  openColorIndex = 0;
+  openSizeIndex = 0;
+  renderModal();
+  document.getElementById("modalOverlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  document.getElementById("modalOverlay").classList.remove("open");
+  document.body.style.overflow = "";
+  openProductId = null;
+}
+
+function renderModal() {
+  const product = PRODUCTS.find(p => p.id === openProductId);
+  if (!product) return;
+
+  const color = product.colors[openColorIndex];
+  const name = product.name[currentLang];
+  const desc = product.description[currentLang];
+
+  let sizesHTML = "";
+  if (product.sizes && product.sizes.length) {
+    sizesHTML = `
+      <div class="modal-field">
+        <span class="modal-field-label">${currentLang === "ar" ? "المقاسات" : "Sizes"}</span>
+        <div class="size-list">
+          ${product.sizes.map((s, i) => `
+            <button class="size-chip ${i === openSizeIndex ? "active" : ""}" data-size-index="${i}" 
+                    style="${i === openSizeIndex ? 'background: var(--lav-deep); color: white;' : ''}">
+              ${s.label[currentLang]} — ${s.dims}
+            </button>
+          `).join("")}
+        </div>
+      </div>
+    `;
+  } else if (product.standardSize) {
+    sizesHTML = `
+      <div class="modal-field">
+        <span class="modal-field-label">${currentLang === "ar" ? "المقاس" : "Size"}</span>
+        <p class="modal-field-text">${product.standardSize[currentLang]}</p>
+      </div>
+    `;
+  }
+
+  const colorsHTML = product.colors.length > 1 ? `
+    <div class="modal-field">
+      <span class="modal-field-label">${currentLang === "ar" ? "الألوان" : "Colors"}</span>
+      <div class="color-list">
+        ${product.colors.map((c, i) => `
+          <button class="color-chip ${i === openColorIndex ? "active" : ""}" data-color-index="${i}" style="background:${c.swatch}"></button>
+        `).join("")}
+      </div>
+    </div>
+  ` : "";
+
+  const imagesHTML = color.images.map(img => `<div class="modal-img-frame"><img src="${img}"></div>`).join("");
+
+  // هنا بنجهز رسالة الواتساب 
+  const whatsappNumber = "201119993467"; // متنسيش تغيري دي برقمك الفعلي
+  const selectedSizeText = product.sizes ? product.sizes[openSizeIndex].label[currentLang] : (currentLang === "ar" ? "مقاس ثابت" : "Standard Size");
+  const messageText = currentLang === "ar" 
+    ? `أهلاً حكاية وردة 🌸\nعايزة أستفسر عن سعر وتفاصيل الأوردر ده:\nالمنتج: ${name}\nاللون: ${color.name[currentLang]}\nالمقاس: ${selectedSizeText}`
+    : `Hello A Rose's Tale 🌸\nI would like to inquire about the price and details for:\nProduct: ${name}\nColor: ${color.name[currentLang]}\nSize: ${selectedSizeText}`;
+  
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(messageText)}`;
+
+  document.getElementById("modalContent").innerHTML = `
+    <div class="modal-gallery">${imagesHTML}</div>
+    <div class="modal-info">
+      <h2>${name}</h2>
+      <p class="modal-desc">${desc}</p>
+      ${colorsHTML}
+      ${sizesHTML}
+      <a href="${whatsappLink}" target="_blank" rel="noopener" class="modal-order-btn" style="margin-top: 20px;">
+        <i class="fab fa-whatsapp"></i> ${currentLang === "ar" ? "اطلبي فوراً على واتساب" : "Order via WhatsApp"}
+      </a>
+    </div>
+  `;
+
+  document.querySelectorAll(".color-chip").forEach(chip => {
+    chip.addEventListener("click", (e) => {
+      openColorIndex = parseInt(e.currentTarget.dataset.colorIndex, 10);
+      renderModal();
+    });
+  });
+
+  document.querySelectorAll(".size-chip").forEach(chip => {
+    chip.addEventListener("click", (e) => {
+      openSizeIndex = parseInt(e.currentTarget.dataset.sizeIndex, 10);
+      renderModal();
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  applyTranslations();
+  renderProducts();
+  
+  document.getElementById("langToggle").addEventListener("click", () => {
+    switchLang(currentLang === "ar" ? "en" : "ar");
+  });
+
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      filterBtns.forEach(b => b.classList.remove("active"));
+      e.target.classList.add("active");
+      currentFilter = e.target.getAttribute("data-filter");
+      renderProducts();
+    });
+  });
+
+  const faqQuestions = document.querySelectorAll(".faq-q");
+  faqQuestions.forEach(q => {
+    q.addEventListener("click", () => {
+      q.classList.toggle("active");
+    });
+  });
+
+  document.getElementById("modalClose").addEventListener("click", closeModal);
+  document.getElementById("modalOverlay").addEventListener("click", (e) => { if (e.target.id === "modalOverlay") closeModal(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+});
+</script>
+</body>
+</html>
