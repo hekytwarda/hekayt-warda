@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Cairo:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!-- إضافة FontAwesome لزرار الواتساب -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 /* ============================================================
@@ -59,8 +58,6 @@ body {
   color: var(--text);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
-  
-  /* إضافة أنيميشن في الخلفية لألوان حيوية أكتر */
   background: linear-gradient(-45deg, #FBF6FB, #FBE3EC, #EAE0F7, #fdf6e3);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
@@ -176,7 +173,7 @@ html[data-lang="ar"] .brand-en { font-size: 0.65rem; }
 /* ============================================================
    HERO
    ============================================================ */
-.hero { position: relative; padding: 70px 24px 90px; text-align: center; overflow: hidden; }
+.hero { position: relative; padding: 70px 24px 80px; text-align: center; overflow: hidden; }
 .hero-motif { color: var(--pink-deep); opacity: 0.55; margin-bottom: 8px; }
 .motif-row { width: 100%; max-width: 380px; height: 40px; margin: 0 auto; display: block; }
 .hero-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 2; }
@@ -185,17 +182,16 @@ html[data-lang="ar"] .brand-en { font-size: 0.65rem; }
 .hero-sub { font-size: 1.08rem; color: var(--text-soft); font-weight: 600; max-width: 480px; margin: 0 auto 20px; }
 html[data-lang="en"] .hero-sub { font-weight: 400; }
 
-/* Gift Badge (عنصر الساسبنس) */
 .hero-gift-badge {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.85);
   border: 2px dashed var(--pink-deep);
-  color: var(--text);
-  padding: 10px 20px;
+  color: var(--pink-text);
+  padding: 10px 22px;
   border-radius: var(--radius-md);
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.95rem;
-  margin: 0 auto 34px;
+  margin: 0 auto 30px;
   box-shadow: var(--shadow-sm);
 }
 
@@ -203,13 +199,55 @@ html[data-lang="en"] .hero-sub { font-weight: 400; }
 .hero-cta:hover { box-shadow: 0 10px 24px -6px rgba(180, 100, 160, 0.7); transform: translateY(-2px); }
 
 /* ============================================================
+   CUSTOM ORDERS BANNER
+   ============================================================ */
+.custom-order-banner {
+  max-width: var(--max-width);
+  margin: 0 auto 40px;
+  padding: 0 24px;
+}
+.custom-order-box {
+  background: linear-gradient(135deg, #FFFFFF, var(--lav));
+  border: 2px solid var(--lav-deep);
+  border-radius: var(--radius-lg);
+  padding: 24px 30px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+.custom-order-box h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: var(--lav-text);
+}
+.custom-order-box p {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+/* ============================================================
    PRODUCTS & FILTERS
    ============================================================ */
-.products-section { max-width: var(--max-width); margin: 0 auto; padding: 20px 24px 100px; }
-.section-head { text-align: center; max-width: 560px; margin: 0 auto 46px; }
+.products-section { max-width: var(--max-width); margin: 0 auto; padding: 20px 24px 80px; }
+.section-head { text-align: center; max-width: 580px; margin: 0 auto 46px; }
 .section-head h2 { font-size: 2rem; margin-bottom: 12px; }
 .section-head p { color: var(--text-soft); font-weight: 600; font-size: 1rem; }
 html[data-lang="en"] .section-head p { font-weight: 400; }
+
+.prominent-deposit {
+  background: #FFF4F8;
+  border: 2px dashed var(--pink-deep);
+  border-radius: var(--radius-md);
+  padding: 15px 20px;
+  margin: 0 auto 40px;
+  max-width: 600px;
+  text-align: center;
+  color: var(--pink-text);
+  font-weight: 800;
+  font-size: 1rem;
+  box-shadow: var(--shadow-sm);
+}
 
 .filters {
   display: flex;
@@ -256,67 +294,51 @@ html[data-lang="en"] .section-head p { font-weight: 400; }
   margin-top: 40px; 
 }
 
-/* كروت السكرين شوتس */
 .review-image-card {
   background: var(--white);
   border-radius: var(--radius-lg);
   padding: 10px;
   box-shadow: var(--shadow-sm);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  min-height: 250px;
+  border: 2px dashed var(--pink-deep);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 250px;
-  border: 2px dashed var(--pink-deep);
 }
-
 .review-image-card img {
   width: 100%;
   border-radius: var(--radius-md);
   object-fit: cover;
 }
-
-/* تأثير تحريك خفيف لما تقفي بالماوس على السكرين شوت */
 .review-image-card:hover {
   transform: scale(1.03) rotate(-1deg);
   box-shadow: var(--shadow-hover);
   border-style: solid;
 }
 
-/* النص اللي بيظهر لو مفيش صورة */
-.review-placeholder-text {
-  color: var(--text-soft);
-  font-weight: 600;
-  text-align: center;
-  font-size: 1.1rem;
-}
-
 /* ============================================================
    FAQ
    ============================================================ */
-.faq-section { max-width: 800px; margin: 0 auto; padding: 80px 24px; }
+.faq-section { max-width: 820px; margin: 0 auto; padding: 60px 24px; }
 .faq-list { margin-top: 40px; }
 .faq-item { background: var(--white); border-radius: var(--radius-md); margin-bottom: 16px; box-shadow: var(--shadow-sm); overflow: hidden; }
-.faq-q { width: 100%; text-align: start; padding: 20px; background: none; border: none; font-size: 1.1rem; font-weight: 700; color: var(--lav-text); display: flex; justify-content: space-between; align-items: center; }
+.faq-q { width: 100%; text-align: start; padding: 20px; background: none; border: none; font-size: 1.05rem; font-weight: 700; color: var(--lav-text); display: flex; justify-content: space-between; align-items: center; }
 .faq-q i { transition: transform 0.3s ease; color: var(--pink-text); }
 .faq-q.active i { transform: rotate(180deg); }
-.faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; font-weight: 500; color: var(--text); }
-.faq-q.active + .faq-a { padding: 0 20px 20px; max-height: 300px; }
+.faq-a { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; font-weight: 500; color: var(--text); line-height: 1.8; }
+.faq-q.active + .faq-a { padding: 0 20px 20px; max-height: 400px; }
 
 /* ============================================================
-   ABOUT & CONTACT
+   ABOUT
    ============================================================ */
 .about-section { padding: 60px 24px; }
-.about-inner { max-width: 640px; margin: 0 auto; text-align: center; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(5px); border-radius: var(--radius-xl); box-shadow: var(--shadow); padding: 46px 40px; border: 1px solid rgba(255,255,255,0.5); }
+.about-inner { max-width: 680px; margin: 0 auto; text-align: center; background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(5px); border-radius: var(--radius-xl); box-shadow: var(--shadow); padding: 46px 40px; border: 1px solid rgba(255,255,255,0.5); }
 .about-inner h2 { font-size: 1.85rem; margin-bottom: 22px; }
 .about-inner p { color: var(--text); font-weight: 500; margin-bottom: 14px; }
-.about-note { margin-top: 26px; padding: 16px 20px; background: linear-gradient(135deg, var(--lav) 0%, var(--pink) 100%); border-radius: var(--radius-md); text-align: start; font-size: 0.95rem; }
-.about-note p { margin: 0; color: var(--text); }
-.about-note strong { color: var(--pink-text); }
 
 .contact-section { padding: 70px 24px 90px; text-align: center; }
-.contact-inner { max-width: 500px; margin: 0 auto; }
+.contact-inner { max-width: 540px; margin: 0 auto; }
 .contact-inner h2 { font-size: 1.85rem; margin-bottom: 14px; }
 .contact-inner p { color: var(--text-soft); font-weight: 600; margin-bottom: 26px; }
 html[data-lang="en"] .contact-inner p { font-weight: 400; }
@@ -377,9 +399,10 @@ html[data-lang="en"] .contact-inner p { font-weight: 400; }
 .color-chip { width: 32px; height: 32px; border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 0 1px var(--text-faint); transition: box-shadow 0.2s; }
 .color-chip.active { box-shadow: 0 0 0 2px var(--lav-deep); }
 .size-list { display: flex; flex-wrap: wrap; gap: 8px; }
-.size-chip { background: var(--bg-2); padding: 7px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; color: var(--text); }
+.size-chip { background: var(--bg-2); padding: 7px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; color: var(--text); border: none; }
 .modal-order-btn { display: block; text-align: center; background: linear-gradient(135deg, var(--lav-deep), var(--pink-deep)); color: #fff; padding: 15px; border-radius: 999px; font-weight: 800; box-shadow: 0 8px 18px -6px rgba(180, 100, 160, 0.5); transition: box-shadow 0.2s, transform 0.2s; }
 .modal-order-btn:hover { box-shadow: 0 10px 22px -6px rgba(180, 100, 160, 0.65); transform: translateY(-1px); }
+.modal-deposit-warning { background: #FFF4F8; color: var(--pink-text); padding: 12px; border-radius: 8px; font-weight: 800; font-size: 0.85rem; margin-top: 15px; text-align: center; border: 1px dashed var(--pink-deep); }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 :focus-visible { outline: 2px solid var(--lav-deep); outline-offset: 2px; }
@@ -391,7 +414,6 @@ html[data-lang="en"] .contact-inner p { font-weight: 400; }
   أهلاً بيكي في حكاية وردة! متاحين لاستقبال أوردراتكم بكل حب 🌸
 </div>
 
-<!-- Decorative granny-square motif strip -->
 <svg width="0" height="0" style="position:absolute">
   <defs>
     <symbol id="granny-flower" viewBox="0 0 40 40">
@@ -438,36 +460,46 @@ html[data-lang="en"] .contact-inner p { font-weight: 400; }
     <div class="hero-inner">
       <h1 class="hero-title">
         <span data-key="hero.title.line1">كل قطعة</span>
-        <span data-key="hero.title.line2">حكايتها اتحاكت بإيد</span>
+        <span data-key="hero.title.line2">حكايتها اتعملت بإيد</span>
       </h1>
-      <p class="hero-sub" data-key="hero.sub">شنط وإكسسوارات كروشيه، مصنوعة قطعة قطعة بحب واهتمام بالتفاصيل</p>
+      <p class="hero-sub" data-key="hero.sub">شنط، ألعاب أطفال وإكسسوارات كروشيه معمولة بإتقان وحب</p>
       
-      <!-- Gift Badge -->
       <div class="hero-gift-badge" data-key="hero.gift">
-        🎁 كل أوردر هيكون معاه هدية بسيطة مختلفة كنوع من الحب والتشويق والساسبنس زي ما بيقولو!
+        🎁 اطلبي قطعتين أو أكتر واحصلي على هدية هاند ميد لطيفة مع أوردرك!
       </div>
       <br>
       <a href="#products" class="hero-cta" data-key="hero.cta">اتفرجي على المنتجات</a>
     </div>
   </section>
 
+  <!-- Custom Orders Banner -->
+  <div class="custom-order-banner">
+    <div class="custom-order-box">
+      <h3 data-key="custom.title">✨ عندك فكرة أو صورة لتصميم نفسك فيه؟</h3>
+      <p data-key="custom.desc">بنفّذ طلبات مخصصة بالكامل! ابعتيلنا أي صورة أو فكرة على واتساب أو إنستجرام وهنعملهالك مخصوص بنفس المواصفات والألوان اللي تختاريها.</p>
+    </div>
+  </div>
+
   <section id="products" class="products-section">
     <div class="section-head">
       <h2 data-key="products.heading">المنتجات</h2>
-      <p data-key="products.sub">كل قطعة بتتعمل خصيصاً لما تطلبيها — استحملينا شوية وقت عشان تطلع زي ما تحلمي بيها</p>
+      <p data-key="products.sub">كل قطعة بتتعمل خصيصاً لما تطلبيها — تسليم يدوي متقن يستاهل انتظارك</p>
+    </div>
+
+    <!-- كارت الديبوزت فوق المنتجات -->
+    <div class="prominent-deposit" data-key="prominent.deposit">
+      ⚠️ تأكيد: بدء العمل في أي قطعة لا يتم نهائياً إلا بعد دفع الديبوزت الخاص بالخامات.
     </div>
 
     <!-- Filters Section -->
     <div class="filters" id="categoryFilters">
       <button class="filter-btn active" data-filter="all" data-key="filter.all">الكل</button>
       <button class="filter-btn" data-filter="bags" data-key="filter.bags">شنط</button>
-      <button class="filter-btn" data-filter="amigurumi" data-key="filter.amigurumi">أميجورومي</button>
+      <button class="filter-btn" data-filter="kids" data-key="filter.kids">ألعاب ومستلزمات أطفال</button>
       <button class="filter-btn" data-filter="accessories" data-key="filter.accessories">إكسسوارات وملابس</button>
     </div>
 
-    <div class="product-grid" id="productGrid">
-      <!-- Product cards injected by JS -->
-    </div>
+    <div class="product-grid" id="productGrid"></div>
   </section>
 
   <!-- REVIEWS SECTION -->
@@ -475,22 +507,12 @@ html[data-lang="en"] .contact-inner p { font-weight: 400; }
     <div class="reviews-inner">
       <div class="section-head">
         <h2 data-key="reviews.heading">بيقولوا عننا إيه؟</h2>
-        <p data-key="reviews.sub">شهادات وسكرينات بنعتز بيها من عملاء حكاية وردة 🌸</p>
+        <p data-key="reviews.sub">سكرينات بنعتز بيها من رسايل عملائنا 🌸</p>
       </div>
       <div class="reviews-grid">
-        
-        <div class="review-image-card">
-          <!-- <img src="images/review-1.jpg" alt="رأي عميل"> -->
-        </div>
-        
-        <div class="review-image-card">
-          <!-- <img src="images/review-2.jpg" alt="رأي عميل"> -->
-        </div>
-        
-        <div class="review-image-card">
-          <!-- <img src="images/review-3.jpg" alt="رأي عميل"> -->
-        </div>
-
+        <div class="review-image-card"></div>
+        <div class="review-image-card"></div>
+        <div class="review-image-card"></div>
       </div>
     </div>
   </section>
@@ -499,53 +521,54 @@ html[data-lang="en"] .contact-inner p { font-weight: 400; }
   <section id="faq" class="faq-section">
     <div class="section-head">
       <h2 data-key="faq.heading">أسئلة شائعة</h2>
-      <p data-key="faq.sub">كل اللي محتاجة تعرفيه عن طلباتك وطريقة العناية بيها</p>
+      <p data-key="faq.sub">تفاصيل مهمة عن الخامات، العناية بالمنتجات، والشحن</p>
     </div>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q" data-key="faq.q1">إزاي أحافظ على الشنط الكروشيه وأنظفها؟ <i class="fas fa-chevron-down"></i></button>
-        <div class="faq-a" data-key="faq.a1">عشان الشنط بتاعتنا متدعمة بشبك بلاستيك عشان تحافظ على هيكلها وتفضل ماسكة نفسها، بننصح إنها تتنظف تنظيف جاف (Dry Clean) أو تتنظف بمسحة خفيفة بقماشة مبللة، وبلاش تتغمر في الماية خالص عشان الشبك ميتأثرش.</div>
+        <button class="faq-q" data-key="faq.q1">إزاي أحافظ على الشنط وأنظفها صح؟ <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a" data-key="faq.a1">الشبك البلاستيك متين جداً ومش بيتأثر بالماية، الغسيل بيكون عن طريق تغطيس الشنطة في وعاء فيه ماية وشوية مسحوق غسيل سائل خفيف (عشان ميسيبش أي ترسبات)، وتمسحي عليها براحة جداً لمدة دقيقة. بعدين تشطفيها بتغطيسها في ماية نضيفة مرتين تلاتة. أخيراً، حطيها على فوطة واضغطي عليها بالخفيف عشان تنزلي الماية الزيادة، وسيبيها تنشف في الهوا براحتها.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" data-key="faq.q2">إزاي أغسل الملابس وعرائس الأميجورومي؟ <i class="fas fa-chevron-down"></i></button>
-        <div class="faq-a" data-key="faq.a2">الملابس (زي الكاردجان والكوفيات) والعرائس اللي بنستخدم فيها خيوط بجودة عالية زي هيمالايا وأليز، تقدري تغسليها على البارد برفق جداً، وتتفرد على سطح مسطح عشان تنشف من غير ما تتمط أو شكلها يتغير.</div>
+        <button class="faq-q" data-key="faq.q2">إزاي أغسل ألعاب الأطفال والملابس؟ <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a" data-key="faq.a2">ألعاب ومستلزمات الأطفال مصنوعة بخيوط ناعمة جداً وآمنة ومقاومة للوبر. اغسليها يدوياً بماية باردة وشوية مسحوق غسيل سائل خفيف، من غير عصر خالص، وافرديها على سطح مسطح تنشف في الهوا عشان تحافظ على حشو الألياف وشكل الغرز.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" data-key="faq.q3">إيه نظام الديبوزيت؟ <i class="fas fa-chevron-down"></i></button>
-        <div class="faq-a" data-key="faq.a3">لأن كل قطعة بتتعمل مخصوص ليكي، بنطلب ديبوزيت يغطي تمن الخامات مقدماً لتأكيد الأوردر، وباقي المبلغ بيتدفع وقت الاستلام.</div>
+        <button class="faq-q" data-key="faq.q3">إيه تفاصيل الشحن والتوصيل؟ <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a" data-key="faq.a3">موقعنا الأساسي في الإسكندرية، ومتاح توصيل واستلام مباشر داخل الإسكندرية بدون مصاريف شحن في نقاط متفق عليها! كما يتوفر شحن لجميع محافظات مصر بتكلفة الشحن العادية حسب منطقتك.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" data-key="faq.q4">هل متاح تنفيذ أشكال وتصاميم خاصة مش معروضة؟ <i class="fas fa-chevron-down"></i></button>
+        <div class="faq-a" data-key="faq.a4">أكيد جداً! نقدر ننفذ أو نعدل أي فكرة، شنطة، لعبة طفل، أو كوفية تحبيها. ابعتي لنا صورتها على الواتساب ونتفق على المقاس والألوان المطلوبة.</div>
       </div>
     </div>
   </section>
 
+  <!-- ABOUT SECTION -->
   <section id="about" class="about-section">
     <div class="about-inner">
       <h2 data-key="about.heading">حكايتنا</h2>
-      <p data-key="about.p1">"حكاية وردة" بدأت كشغف وهواية لسنين بالكروشيه، وبقت مشروع بيحول الخيط لقطع تلبسيها أو تاخديها معاكي في كل حتة.</p>
-      <p data-key="about.p2">كل قطعة بتتعمل بإيد، غرزة ورا غرزة، وده بياخد وقت — عشان كده كل أوردر ليه مدة تسليم مختلفة حسب حجم الشغل.</p>
-      <div class="about-note">
-        <p data-key="about.deposit"><strong data-key="about.deposit.label">مهم:</strong> بنطلب ديبوزيت بتمن الخامات مقدماً لكل أوردر، والباقي عند التسليم.</p>
-      </div>
+      <p data-key="about.p1">"حكاية وردة" مشروع بدأ بشغف كبير لتحويل خيوط الكروشيه لقطع مميزة تعيش معاكي وتفرحك في كل تفصيلة.</p>
+      <p data-key="about.p2">كل قطعة بتتصمم وتتعمل يدوياً بعناية وتاخد وقتها عشان تطلع بأعلى جودة وإتقان، عشان كده كل أوردر ليه موعد تسليم محدد حسب دقته.</p>
     </div>
   </section>
 
   <section class="contact-section">
     <div class="contact-inner">
-      <h2 data-key="contact.heading">عايزة تطلبي قطعة؟</h2>
-      <p data-key="contact.sub">ابعتيلنا رسالة بسكرين على إنستجرام أو واتساب بالمنتج واللون والمقاس اللي يعجبك، وهنرد عليكي بالسعر وميعاد التسليم (الرد على طلباتكم هيكون من 3 إلى 8 بليل بإذن الله)</p>
+      <h2 data-key="contact.heading">عايزة تطلبي أو تستفسري؟</h2>
+      <p data-key="contact.sub">تواصلي معنا عبر إنستجرام أو واتساب بطلبك وهنرد عليكي بكافة التفاصيل وميعاد التسليم</p>
       <a href="https://instagram.com/hekayt_warda" target="_blank" rel="noopener" class="instagram-btn">
         <i class="fab fa-instagram"></i>
         <span>hekayt_warda</span>
       </a>
     </div>
   </section>
-
 </main>
 
 <footer class="site-footer">
   <p><span class="brand-ar">حكاية وردة</span> · <span class="brand-en">A Rose's Tale</span></p>
 </footer>
 
-<!-- WhatsApp Floating Button (غيري الرقم بالرقم بتاعك) -->
+<!-- WhatsApp Floating Button -->
 <a href="https://wa.me/201119993467" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <i class="fab fa-whatsapp"></i>
 </a>
@@ -560,26 +583,24 @@ html[data-lang="en"] .contact-inner p { font-weight: 400; }
 
 <script>
 // ============================================================
-// PRODUCT DATA (بدون أسعار)
+// PRODUCT DATA
 // ============================================================
 const PRODUCTS = [
   {
     id: "flower-bag-01",
     category: "bags",
-    name: { ar: "شنطة الورود", en: "Flower Bag" },
+    name: { ar: "شنطة حكاية وردة", en: "A Rose's Tale Bag" },
     description: {
-      ar: "شنطة كروشيه بتصميم ورود بارزة، بسلسلة قابلة للتغيير. مدعمة من الداخل بشبك بلاستيك للحفاظ على شكلها وقوامها. كل وردة بتتحاك لوحدها وتتركب بعدين.",
-      en: "A crochet bag with raised flower detailing and an adjustable metal chain. Reinforced internally to maintain its shape."
+      ar: "الشنطة الأساسية بتصميم ورود بارزة، وسلسلة معدنية متينة قابلة للتغيير. مدعمة من الداخل بشبك بلاستيك للحفاظ على شكلها وقوامها ومبطنة بقماش عالي الجودة وسوستة حديدية.",
+      en: "Our signature bag with raised 3D flower detailing, removable chain strap, fully lined, and reinforced with a sturdy base."
     },
     madeToOrder: true,
-    turnaround: { ar: "أسبوع إلى أسبوعين", en: "1–2 weeks" },
-    sizes: [
-      { label: { ar: "سمول", en: "Small" }, dims: "18 × 12 cm" },
-      { label: { ar: "لارج", en: "Large" }, dims: "24 × 16 cm" }
-    ],
+    turnaround: { ar: "شهر من تأكيد الأوردر", en: "1 Month" },
+    standardSize: { ar: "مقاس موحد: ارتفاع 16 سم × عرض خارجي 26 سم (عرض داخلي 23 سم)", en: "One Size: 16cm H × 26cm outer width (23cm inner)" },
     colors: [
       { name: { ar: "أحمر وأبيض", en: "Red & White" }, swatch: "#A8283F", images: ["images/flower-bag-red-1.jpg"] },
-      { name: { ar: "بني ورمادي", en: "Brown & Grey" }, swatch: "#6B5A4A", images: ["images/flower-bag-brown-1.jpg", "images/flower-bag-brown-2.jpg"] },
+      { name: { ar: "بني ورمادي", en: "Brown" }, swatch: "#6B5A4A", images: ["images/flower-bag-brown-1.jpg", "images/flower-bag-brown-2.jpg"] },
+      { name: { ar: "بني ورمادي", en: "Black" }, swatch: "#1A202C", images: ["images/flower-bag-black-1.jpg"] },
       { name: { ar: "أزرق وأبيض", en: "Blue & White" }, swatch: "#1F3A5F", images: ["images/flower-bag-blue-1.jpg"] }
     ]
   },
@@ -588,14 +609,13 @@ const PRODUCTS = [
     category: "bags",
     name: { ar: "شنطة التوت", en: "Berry Bag" },
     description: {
-      ar: "شنطة كروشيه بشكل مثلث ودراع طويل، بغرزة الجرانى سكوير الكلاسيكية. مدعمة بشبك بلاستيك للحفاظ على قوام الشنطة المربع وثبات الغرز.",
-      en: "A triangular crochet crossbody bag in the classic granny-square stitch."
+      ar: "شنطة مثلثة كروس ودراع طويل. مزودة بقفل مغناطيسي محكم وبطانة داخلية ممتازة للحفاظ على شكلها وتماسكها.",
+      en: "A triangular crossbody bag. Features a magnetic clasp, protective inner lining to keep its shape."
     },
     madeToOrder: true,
     turnaround: { ar: "أسبوع إلى أسبوعين", en: "1–2 weeks" },
     sizes: [
-      { label: { ar: "سمول", en: "Small" }, dims: "18 × 12 cm" },
-      { label: { ar: "لارج", en: "Large" }, dims: "24 × 16 cm" }
+      { label: { ar: "S", en: "S" }, dims: "28 × 26 cm" }
     ],
     colors: [
       { name: { ar: "كريمي وبني وأحمر غامق", en: "Cream, Tan & Burgundy" }, swatch: "#8B3A3A", images: ["images/berry-bag-1.jpg", "images/berry-bag-2.jpg", "images/berry-bag-3.jpg"] }
@@ -606,45 +626,63 @@ const PRODUCTS = [
     category: "accessories",
     name: { ar: "معصم اليد الكروشيه", en: "Crochet Wristlet Cuff" },
     description: {
-      ar: "معصم كروشيه بغرزة سيمبل وشيك، بيتعمل نسخة شتوي (خيط أتقل) أو صيفي (خيط أخف).",
-      en: "A crochet wristlet cuff, made in a winter version or summer version."
+      ar: "معصم كروشيه أنيق بغرزة ناعمة، متاح بخامة صيفية خفيفة أو شتوية دافئة، مع إمكانية إضافة أزرار لؤلؤية رقيقة.",
+      en: "An elegant crochet wrist cuff, available in light summer or cozy winter yarns, with optional pearl buttons."
     },
     madeToOrder: true,
-    turnaround: { ar: "أسبوع", en: "one week" },
-    standardSize: { ar: "مقاسه حسب معصم ايدك مخصوص على قدك", en: "Your own size" },
+    turnaround: { ar: "أسبوع", en: "1 week" },
+    standardSize: { ar: "تفصيل مخصوص على مقاس معصم يدك", en: "Custom-made to your wrist size" },
     colors: [
       { name: { ar: "أسود بلآلئ", en: "Black with Pearls" }, swatch: "#1A1A1A", images: ["images/wristlet-black-1.jpg", "images/wristlet-black-2.jpg"] },
-      { name: { ar: "كريمي من غير زراير", en: "Cream, Plain" }, swatch: "#EDE6D6", images: ["images/wristlet-white-1.jpg"] }
+      { name: { ar: "كريمي سادة", en: "Cream, Plain" }, swatch: "#EDE6D6", images: ["images/wristlet-white-1.jpg"] }
+    ]
+  },
+  {
+    id: "bow-clip-01",
+    category: "accessories",
+    name: { ar: "توكة فيونكة كروشيه بالكرز", en: "Cherry Bow Hair Clip" },
+    description: {
+      ar: "توكة شعر هاند ميد على شكل فيونكة بارزة بكرزتين محشوتين مثبتة بكلبس حديدي. متاحة بالقطعة أو كعرض 3 قطع.",
+      en: "Handmade bow-shaped hair clip with stuffed cherries on a secure metal clip. Available individually or in a 3-piece set."
+    },
+    madeToOrder: true,
+    turnaround: { ar: "3 أيام للقطعة، وأسبوع لعرض الـ 3 قطع", en: "3 days for 1 piece, 1 week for 3 pieces" },
+    sizes: [
+      { label: { ar: "قطعة واحدة", en: "1 Piece" }, dims: "مقاس قياسي" },
+      { label: { ar: "عرض 3 قطع", en: "Set of 3" }, dims: "مقاس قياسي" }
+    ],
+    colors: [
+      { name: { ar: "بني (اللون الأساسي)", en: "Brown (Standard)" }, swatch: "#6B5A4A", images: ["images/doll-bow-2.jpg", "images/doll-bow-3.jpg"] }
+    ]
+  },
+  {
+    id: "doll-01",
+    category: "kids",
+    name: { ar: "عروسة سندريلا", en: "Cinderella Doll" },
+    description: {
+      ar: "عروسة أطفال هاند ميد معمولة بأعلى درجات الأمان بخيوط فائقة النعومة والمقاومة للوبر. ناعمة جداً وآمنة للعب الأطفال.",
+      en: "A soft handmade doll crocheted with baby-safe yarn. Gentle and safe for children."
+    },
+    madeToOrder: true,
+    turnaround: { ar: "أسبوع تقريبا", en: "About 1 week or slightly more" },
+    standardSize: { ar: "بحجم كف اليد تقريباً", en: "Approx. palm-sized" },
+    colors: [
+      { name: { ar: "أزرق فاتح وبني", en: "Light Blue & Brown" }, swatch: "#A9C4DE", images: ["images/doll-bow-1.jpg"] }
     ]
   },
   {
     id: "duck-keychain-01",
-    category: "amigurumi",
-    name: { ar: "كتكوت كروشيه", en: "Crochet Duck" },
+    category: "kids",
+    name: { ar: "كتكوت كوكو", en: "Koko the Duck" },
     description: {
-      ar: "كتكوت أميجورومي كروشيه صغير بطاقية قابلة للخلع، مصنوع من خيوط ناعمة وعالية الجودة.",
-      en: "A small crochet amigurumi duck wearing a little hat."
+      ar: "كتكوت صغير لطيف بخيوط ناعمة آمنة وبطاقية قابلة للفك، لعبة للأطفال .",
+      en: "A cute little duck crocheted with soft yarn and a removable hat, perfect as a small toy or charm."
     },
     madeToOrder: true,
-    turnaround: { ar: "3 إلى 5 أيام", en: "3–5 days" },
-    standardSize: { ar: "بحجم كف اليد تقريباً", en: "Roughly palm-sized" },
+    turnaround: { ar: "أسبوع تقريبا", en: "About 1 week or slightly more" },
+    standardSize: { ar: "بحجم كف اليد تقريباً", en: "Approx. palm-sized" },
     colors: [
-      { name: { ar: "أصفر فاتح", en: "Pale Yellow" }, swatch: "#F3E9B8", images: ["images/duck-1.jpg", "images/duck-2.jpg"] }
-    ]
-  },
-  {
-    id: "doll-bowclip-01",
-    category: "amigurumi",
-    name: { ar: "عروسة وتوكة فيونكة", en: "Doll & Bow Hair Clip" },
-    description: {
-      ar: "عروسة أميجورومي كروشيه صغيرة بخيوط ناعمة، معاها توكة شعر على شكل فيونكة.",
-      en: "A small amigurumi crochet doll paired with a bow-shaped hair clip."
-    },
-    madeToOrder: true,
-    turnaround: { ar: "أسبوع تقريباً", en: "About a week" },
-    standardSize: { ar: "العروسة بحجم كف اليد تقريباً", en: "Doll is roughly palm-sized" },
-    colors: [
-      { name: { ar: "أزرق فاتح وبني", en: "Light Blue & Brown" }, swatch: "#A9C4DE", images: ["images/doll-bow-1.jpg", "images/doll-bow-2.jpg", "images/doll-bow-3.jpg"] }
+      { name: { ar: "أصفر فاتح", en: "Pale Yellow" }, swatch: "#F3E9B8", images: ["images/duck-1.jpg"] }
     ]
   }
 ];
@@ -662,80 +700,86 @@ const TRANSLATIONS = {
     "nav.faq": "أسئلة شائعة",
     "nav.about": "حكايتنا",
     "hero.title.line1": "كل قطعة",
-    "hero.title.line2": "حكايتها اتحاكت بإيد",
-    "hero.sub": "شنط وإكسسوارات كروشيه، مصنوعة قطعة قطعة بحب واهتمام بالتفاصيل",
-    "hero.gift": "🎁 كل أوردر هيكون معاه هدية بسيطة مختلفة كنوع من التشويق والساسبنس!",
+    "hero.title.line2": "حكايتها اتعملت بإيد",
+    "hero.sub": "شنط، ألعاب أطفال وإكسسوارات كروشيه معمولة بإتقان وحب",
+    "hero.gift": "🎁 اطلبي قطعتين أو أكتر واحصلي على هدية هاند ميد لطيفة مع أوردرك!",
     "hero.cta": "اتفرجي على منتجاتنا",
+    "custom.title": "✨ عندك فكرة أو صورة لتصميم نفسك فيه؟",
+    "custom.desc": "بنفّذ طلبات مخصصة بالكامل! ابعتيلنا أي صورة أو فكرة على واتساب أو إنستجرام وهنعملهالك مخصوص بنفس المواصفات والألوان اللي تختاريها.",
     "products.heading": "المنتجات",
-    "products.sub": "كل قطعة بتتعمل خصيصاً لما تطلبيها — استحملينا شوية وقت عشان تطلع زي ما تحلمي بيها",
+    "products.sub": "كل قطعة بتتعمل خصيصاً لما تطلبيها — تسليم يدوي متقن يستاهل انتظارك",
+    "prominent.deposit": "⚠️ تأكيد: بدء العمل في أي قطعة لا يتم نهائياً إلا بعد دفع الديبوزت الخاص بالخامات.",
     "filter.all": "الكل",
     "filter.bags": "شنط",
-    "filter.amigurumi": "أميجورومي",
+    "filter.kids": "ألعاب ومستلزمات أطفال",
     "filter.accessories": "إكسسوارات وملابس",
     "product.viewDetails": "التفاصيل",
     "product.colors": "الألوان المتاحة",
-    "product.sizes": "المقاسات",
-    "product.turnaround": "مدة التسليم",
+    "product.sizes": "المقاسات المتاحة",
+    "product.turnaround": "مدة التنفيذ والتسليم",
     "product.standardSize": "المقاس",
-    "product.orderBtn": "اطلبي على إنستجرام",
+    "product.orderBtn": "اطلبي فوراً على واتساب",
     "reviews.heading": "بيقولوا عننا إيه؟",
-    "reviews.sub": "شهادات وسكرينات بنعتز بيها من عملاء حكاية وردة 🌸",
+    "reviews.sub": "سكرينات بنعتز بيها من رسايل عملائنا 🌸",
     "faq.heading": "أسئلة شائعة",
-    "faq.sub": "كل اللي محتاجة تعرفيه عن طلباتك وطريقة العناية بيها",
-    "faq.q1": "إزاي أحافظ على الشنط الكروشيه وأنظفها؟",
-    "faq.a1": "عشان الشنط بتاعتنا متدعمة بشبك بلاستيك عشان تحافظ على هيكلها وتفضل ماسكة نفسها، بننصح إنها تتنظف تنظيف جاف (Dry Clean) أو تتنظف بمسحة خفيفة بقماشة مبللة، وبلاش تتغمر في الماية خالص عشان الشبك ميتأثرش.",
-    "faq.q2": "إزاي أغسل الملابس وعرائس الأميجورومي؟",
-    "faq.a2": "الملابس (زي الكاردجان والكوفيات) والعرائس اللي بنستخدم فيها خيوط بجودة عالية زي هيمالايا وأليز، تقدري تغسليها على البارد برفق جداً، وتتفرد على سطح مسطح عشان تنشف من غير ما تتمط أو شكلها يتغير.",
-    "faq.q3": "إيه نظام الديبوزيت؟",
-    "faq.a3": "لأن كل قطعة بتتعمل مخصوص ليكي، بنطلب ديبوزيت يغطي تمن الخامات مقدماً لتأكيد الأوردر، وباقي المبلغ بيتدفع وقت الاستلام.",
+    "faq.sub": "تفاصيل مهمة عن الخامات، العناية بالمنتجات، والشحن",
+    "faq.q1": "إزاي أحافظ على الشنط وأنظفها صح؟",
+    "faq.a1": "الشبك البلاستيك متين جداً ومش بيتأثر بالماية، الغسيل بيكون عن طريق تغطيس الشنطة في وعاء فيه ماية وشوية مسحوق غسيل سائل خفيف (عشان ميسيبش أي ترسبات)، وتمسحي عليها براحة جداً لمدة دقيقة. بعدين تشطفيها بتغطيسها في ماية نضيفة مرتين تلاتة. أخيراً، حطيها على فوطة واضغطي عليها بالخفيف عشان تنزلي الماية الزيادة، وسيبيها تنشف في الهوا براحتها.",
+    "faq.q2": "إزاي أغسل ألعاب الأطفال والملابس؟",
+    "faq.a2": "ألعاب ومستلزمات الأطفال مصنوعة بخيوط ناعمة جداً وآمنة ومقاومة للوبر. اغسليها يدوياً بماية باردة وشوية مسحوق غسيل سائل خفيف، من غير عصر خالص، وافرديها على سطح مسطح تنشف في الهوا عشان تحافظ على حشو الألياف وشكل الغرز.",
+    "faq.q3": "إيه تفاصيل الشحن والتوصيل؟",
+    "faq.a3": "موقعنا الأساسي في الإسكندرية، ومتاح توصيل واستلام مباشر داخل الإسكندرية بدون مصاريف شحن في نقاط متفق عليها! كما يتوفر شحن لجميع محافظات مصر بتكلفة الشحن العادية حسب منطقتك.",
+    "faq.q4": "هل متاح تنفيذ أشكال وتصاميم خاصة مش معروضة؟",
+    "faq.a4": "أكيد جداً! نقدر ننفذ أو نعدل أي فكرة، شنطة، لعبة طفل، أو كوفية تحبيها. ابعتي لنا صورتها على الواتساب ونتفق على المقاس والألوان المطلوبة.",
     "about.heading": "حكايتنا",
-    "about.p1": "\"حكاية وردة\" بدأت كشغف وهواية لسنين بالكروشيه، وبقت مشروع بيحول الخيط لقطع تلبسيها أو تاخديها معاكي في كل حتة.",
-    "about.p2": "كل قطعة بتتعمل بإيد، غرزة ورا غرزة، وده بياخد وقت — عشان كده كل أوردر ليه مدة تسليم مختلفة حسب حجم الشغل.",
-    "about.deposit.label": "مهم:",
-    "about.deposit": "بنطلب ديبوزيت بتمن الخامات مقدماً لكل أوردر، والباقي عند التسليم.",
-    "contact.heading": "عايزة تطلبي قطعة؟",
-    "contact.sub": "ابعتيلنا رسالة بسكرين على إنستجرام أو واتساب بالمنتج واللون والمقاس اللي يعجبك، وهنرد عليكي بالسعر وميعاد التسليم"
+    "about.p1": "\"حكاية وردة\" مشروع بدأ بشغف كبير لتحويل خيوط الكروشيه لقطع مميزة تعيش معاكي وتفرحك في كل تفصيلة.",
+    "about.p2": "كل قطعة بتتصمم وتتعمل يدوياً بعناية وتاخد وقتها عشان تطلع بأعلى جودة وإتقان، عشان كده كل أوردر ليه موعد تسليم محدد حسب دقته.",
+    "contact.heading": "عايزة تطلبي أو تستفسري؟",
+    "contact.sub": "تواصلي معنا عبر إنستجرام أو واتساب بطلبك وهنرد عليكي بكافة التفاصيل وميعاد التسليم"
   },
   en: {
-    "announcement": "Welcome to A Rose's Tale! We are ready to receive your lovely orders 🌸",
+    "announcement": "Welcome to A Rose's Tale! Handcrafted with love 🌸",
     "nav.shop": "Shop",
     "nav.reviews": "Reviews",
     "nav.faq": "FAQ",
     "nav.about": "Our Story",
     "hero.title.line1": "Every piece",
     "hero.title.line2": "has a story stitched by hand",
-    "hero.sub": "Crochet bags and accessories, made one piece at a time with care for every detail",
-    "hero.gift": "🎁 Every order comes with a small surprise gift for a little suspense!",
+    "hero.sub": "Bags, baby toys, and handcrafted crochet accessories",
+    "hero.gift": "🎁 Order 2 pieces or more and receive a sweet handmade surprise gift!",
     "hero.cta": "Browse the shop",
+    "custom.title": "✨ Looking for a custom design?",
+    "custom.desc": "We love bringing your ideas to life! Send us any photo or concept on WhatsApp or Instagram, and we will custom-stitch it to your exact preferences.",
     "products.heading": "Shop",
-    "products.sub": "Every piece is made to order once you request it — thank you for your patience",
+    "products.sub": "Every piece is carefully made to order — unique handmade quality worth the wait",
+    "prominent.deposit": "⚠️ Note: Work on any piece does not begin until the material deposit is paid.",
     "filter.all": "All",
     "filter.bags": "Bags",
-    "filter.amigurumi": "Amigurumi",
+    "filter.kids": "Baby & Kids",
     "filter.accessories": "Accessories & Clothes",
     "product.viewDetails": "Details",
-    "product.colors": "Available colors",
-    "product.sizes": "Sizes",
-    "product.turnaround": "Turnaround time",
+    "product.colors": "Available Colors",
+    "product.sizes": "Available Sizes",
+    "product.turnaround": "Turnaround Time",
     "product.standardSize": "Size",
-    "product.orderBtn": "Order on Instagram",
+    "product.orderBtn": "Order via WhatsApp",
     "reviews.heading": "What they say",
-    "reviews.sub": "Screenshots and testimonials we cherish from our lovely clients 🌸",
+    "reviews.sub": "Client screenshots we cherish 🌸",
     "faq.heading": "FAQ",
-    "faq.sub": "Everything you need to know about your orders and how to care for them",
+    "faq.sub": "Important notes on materials, care instructions, and shipping",
     "faq.q1": "How do I care for my crochet bag?",
-    "faq.a1": "Since our bags are reinforced with a plastic mesh base to keep their shape, we recommend dry cleaning or a light wipe down. Do not submerge in water.",
-    "faq.q2": "How do I wash clothes and amigurumi dolls?",
-    "faq.a2": "Items made with high-quality yarns like Himalaya and Alize should be washed gently in cold water and laid flat to dry to maintain their shape.",
-    "faq.q3": "What is the deposit policy?",
-    "faq.a3": "Because each item is made to order, we require a deposit covering the cost of materials upfront, with the rest due upon delivery.",
+    "faq.a1": "Our bags are structured with an internal plastic mesh. Do not machine wash or soak. Hand wash by gently dipping the bag in water with mild liquid detergent, gently wipe for a minute, then rinse by dipping in clean water. Press lightly with a towel and air dry.",
+    "faq.q2": "How do I wash baby items and toys?",
+    "faq.a2": "Baby products and toys are made with soft, anti-pilling yarn. Hand wash gently in cool water with mild liquid detergent and lay flat to dry to preserve their shape.",
+    "faq.q3": "What are the shipping options?",
+    "faq.a3": "We are based in Alexandria, offering direct pick-up points across Alexandria with zero shipping fees! Nationwide delivery across Egypt is also available at standard shipping rates.",
+    "faq.q4": "Can you customize designs not listed in the shop?",
+    "faq.a4": "Absolutely! We can replicate or modify any design. Just send us an image or description on WhatsApp, and we'll craft it for you.",
     "about.heading": "Our Story",
-    "about.p1": "A Rose's Tale began as a simple love for crochet, and grew into a project that turns yarn into pieces you can wear or carry with you anywhere.",
-    "about.p2": "Every piece is stitched by hand, one thread at a time — that's why each order has a different turnaround time.",
-    "about.deposit.label": "Note:",
-    "about.deposit": "We ask for a deposit covering material costs upfront for every order, with the rest due on delivery.",
+    "about.p1": "A Rose's Tale began with a deep love for handcrafted crochet, making pieces that brighten your day.",
+    "about.p2": "Every piece is custom designed and hand-stitched with care and dedication.",
     "contact.heading": "Ready to order?",
-    "contact.sub": "Message us on Instagram or WhatsApp with the product, color and size you'd like, and we'll reply with the details!"
+    "contact.sub": "Message us on WhatsApp or Instagram with your chosen piece and we'll get back to you with all details"
   }
 };
 
@@ -768,7 +812,7 @@ function switchLang(lang) {
 
 <script>
 // ============================================================
-// APP LOGIC (Filters & Modals & WhatsApp Auto-Message)
+// APP LOGIC
 // ============================================================
 let openProductId = null;
 let openColorIndex = 0;
@@ -795,7 +839,7 @@ function renderProducts() {
         <div class="swatch-row">
           ${product.colors.map(c => `<span class="mini-swatch" style="background:${c.swatch}" title="${c.name[currentLang]}"></span>`).join("")}
         </div>
-        <button class="card-details-btn">${currentLang === "ar" ? "التفاصيل" : "Details"}</button>
+        <button class="card-details-btn">${t("product.viewDetails")}</button>
       </div>
     `;
     card.addEventListener("click", () => openModal(product.id));
@@ -818,6 +862,8 @@ function closeModal() {
   openProductId = null;
 }
 
+function refreshOpenModal() { if (openProductId) renderModal(); }
+
 function renderModal() {
   const product = PRODUCTS.find(p => p.id === openProductId);
   if (!product) return;
@@ -830,12 +876,12 @@ function renderModal() {
   if (product.sizes && product.sizes.length) {
     sizesHTML = `
       <div class="modal-field">
-        <span class="modal-field-label">${currentLang === "ar" ? "المقاسات" : "Sizes"}</span>
+        <span class="modal-field-label">${t("product.sizes")}</span>
         <div class="size-list">
           ${product.sizes.map((s, i) => `
             <button class="size-chip ${i === openSizeIndex ? "active" : ""}" data-size-index="${i}" 
                     style="${i === openSizeIndex ? 'background: var(--lav-deep); color: white;' : ''}">
-              ${s.label[currentLang]} — ${s.dims}
+              ${s.label[currentLang]} (${s.dims})
             </button>
           `).join("")}
         </div>
@@ -844,7 +890,7 @@ function renderModal() {
   } else if (product.standardSize) {
     sizesHTML = `
       <div class="modal-field">
-        <span class="modal-field-label">${currentLang === "ar" ? "المقاس" : "Size"}</span>
+        <span class="modal-field-label">${t("product.standardSize")}</span>
         <p class="modal-field-text">${product.standardSize[currentLang]}</p>
       </div>
     `;
@@ -852,7 +898,7 @@ function renderModal() {
 
   const colorsHTML = product.colors.length > 1 ? `
     <div class="modal-field">
-      <span class="modal-field-label">${currentLang === "ar" ? "الألوان" : "Colors"}</span>
+      <span class="modal-field-label">${t("product.colors")}</span>
       <div class="color-list">
         ${product.colors.map((c, i) => `
           <button class="color-chip ${i === openColorIndex ? "active" : ""}" data-color-index="${i}" style="background:${c.swatch}"></button>
@@ -863,12 +909,11 @@ function renderModal() {
 
   const imagesHTML = color.images.map(img => `<div class="modal-img-frame"><img src="${img}"></div>`).join("");
 
-  // هنا بنجهز رسالة الواتساب 
-  const whatsappNumber = "201119993467"; // متنسيش تغيري دي برقمك الفعلي
-  const selectedSizeText = product.sizes ? product.sizes[openSizeIndex].label[currentLang] : (currentLang === "ar" ? "مقاس ثابت" : "Standard Size");
+  const whatsappNumber = "201119993467";
+  const selectedSizeText = product.sizes ? product.sizes[openSizeIndex].label[currentLang] : (currentLang === "ar" ? "مقاس موحد" : "Standard Size");
   const messageText = currentLang === "ar" 
-    ? `أهلاً حكاية وردة 🌸\nعايزة أستفسر عن سعر وتفاصيل الأوردر ده:\nالمنتج: ${name}\nاللون: ${color.name[currentLang]}\nالمقاس: ${selectedSizeText}`
-    : `Hello A Rose's Tale 🌸\nI would like to inquire about the price and details for:\nProduct: ${name}\nColor: ${color.name[currentLang]}\nSize: ${selectedSizeText}`;
+    ? `أهلاً حكاية وردة 🌸\nعايزة أستفسر عن سعر وتفاصيل القطعة دي:\nالمنتج: ${name}\nاللون: ${color.name[currentLang]}\nالمقاس: ${selectedSizeText}`
+    : `Hello A Rose's Tale 🌸\nI would like to inquire about the details for:\nProduct: ${name}\nColor: ${color.name[currentLang]}\nSize: ${selectedSizeText}`;
   
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(messageText)}`;
 
@@ -879,8 +924,15 @@ function renderModal() {
       <p class="modal-desc">${desc}</p>
       ${colorsHTML}
       ${sizesHTML}
+      <div class="modal-field">
+        <span class="modal-field-label">${t("product.turnaround")}</span>
+        <p class="modal-field-text">${product.turnaround[currentLang]}</p>
+      </div>
+      <div class="modal-deposit-warning">
+        ${currentLang === "ar" ? "⚠️ تأكيد الأوردر بيتم بعد دفع ديبوزت الخامات" : "⚠️ Order is confirmed only upon material deposit payment"}
+      </div>
       <a href="${whatsappLink}" target="_blank" rel="noopener" class="modal-order-btn" style="margin-top: 20px;">
-        <i class="fab fa-whatsapp"></i> ${currentLang === "ar" ? "اطلبي فوراً على واتساب" : "Order via WhatsApp"}
+        <i class="fab fa-whatsapp"></i> ${t("product.orderBtn")}
       </a>
     </div>
   `;
