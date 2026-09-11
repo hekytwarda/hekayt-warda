@@ -293,7 +293,6 @@ html[data-lang="en"] .section-head p { font-weight: 400; }
   gap: 24px; 
   margin-top: 40px; 
 }
-
 .review-image-card {
   background: var(--white);
   border-radius: var(--radius-lg);
@@ -368,11 +367,11 @@ html[data-lang="en"] .contact-inner p { font-weight: 400; }
 .modal-field { margin-bottom: 22px; }
 .modal-field-label { display: block; font-weight: 800; font-size: 0.85rem; color: var(--lav-text); margin-bottom: 10px; }
 .modal-field-text { margin: 0; color: var(--text); font-weight: 600; }
-.color-list { display: flex; gap: 10px; }
-.color-chip { width: 32px; height: 32px; border-radius: 50%; border: 3px solid var(--white); box-shadow: 0 0 0 1px var(--text-faint); transition: box-shadow 0.2s; }
-.color-chip.active { box-shadow: 0 0 0 2px var(--lav-deep); }
+.color-list { display: flex; gap: 10px; flex-wrap: wrap; }
+.color-chip { padding: 6px 14px; border-radius: 999px; border: 2px solid transparent; background: var(--white); color: var(--text); font-weight: 700; font-size: 0.85rem; box-shadow: 0 0 0 1px var(--text-faint); transition: all 0.2s; cursor: pointer; }
+.color-chip.active { box-shadow: 0 0 0 2px var(--lav-deep); background: var(--lav-deep); color: white; border-color: var(--lav-deep); }
 .size-list { display: flex; flex-wrap: wrap; gap: 8px; }
-.size-chip { background: var(--bg-2); padding: 7px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; color: var(--text); border: none; }
+.size-chip { background: var(--bg-2); padding: 7px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; color: var(--text); border: none; cursor: pointer; }
 
 /* زرار النسخ وإنستجرام */
 .modal-order-btn { display: block; text-align: center; width: 100%; border: none; cursor: pointer; background: linear-gradient(135deg, var(--lav-deep), var(--pink-deep)); color: #fff; padding: 15px; border-radius: 999px; font-weight: 800; box-shadow: 0 8px 18px -6px rgba(180, 100, 160, 0.5); transition: box-shadow 0.2s, transform 0.2s; margin-top: 20px; font-size: 1rem; }
@@ -562,10 +561,10 @@ const PRODUCTS = [
     turnaround: { ar: "شهر من تأكيد الأوردر", en: "1 Month" },
     standardSize: { ar: "مقاس موحد: ارتفاع 16 سم × عرض خارجي 26 سم (عرض داخلي 23 سم)", en: "One Size: 16cm H × 26cm outer width (23cm inner)" },
     colors: [
-      { name: { ar: "أحمر وأبيض", en: "Red & White" }, swatch: "#A8283F", images: ["images/flower-bag-red-1.jpg"] },
-      { name: { ar: "بني ورمادي", en: "Brown" }, swatch: "#6B5A4A", images: ["images/flower-bag-brown-1.jpg", "images/flower-bag-brown-2.jpg"] },
-      { name: { ar: "أسود", en: "Black" }, swatch: "#1A202C", images: ["images/flower-bag-black-1.jpg"] },
-      { name: { ar: "أزرق وأبيض", en: "Blue & White" }, swatch: "#1F3A5F", images: ["images/flower-bag-blue-1.jpg"] }
+      { name: { ar: "أحمر وأبيض", en: "Red & White" }, images: ["images/flower-bag-red-1.jpg"] },
+      { name: { ar: "بني ورمادي", en: "Brown" }, images: ["images/flower-bag-brown-1.jpg", "images/flower-bag-brown-2.jpg"] },
+      { name: { ar: "أسود", en: "Black" }, images: ["images/flower-bag-black-1.jpg"] },
+      { name: { ar: "أزرق وأبيض", en: "Blue & White" }, images: ["images/flower-bag-blue-1.jpg"] }
     ]
   },
   {
@@ -578,11 +577,9 @@ const PRODUCTS = [
     },
     madeToOrder: true,
     turnaround: { ar: "أسبوع إلى أسبوعين", en: "1–2 weeks" },
-    sizes: [
-      { label: { ar: "S", en: "S" }, dims: "28 × 26 cm" }
-    ],
+    standardSize: { ar: "مقاس السمول: طول 28 سم × عرض القاعدة 26 سم", en: "Small: 28cm H × 26cm Base" },
     colors: [
-      { name: { ar: "كريمي وبني وأحمر غامق", en: "Cream, Tan & Burgundy" }, swatch: "#8B3A3A", images: ["images/berry-bag-1.jpg", "images/berry-bag-2.jpg", "images/berry-bag-3.jpg"] }
+      { name: { ar: "كريمي وبني وأحمر غامق", en: "Cream, Tan & Burgundy" }, images: ["images/berry-bag-1.jpg", "images/berry-bag-2.jpg", "images/berry-bag-3.jpg"] }
     ]
   },
   {
@@ -597,8 +594,8 @@ const PRODUCTS = [
     turnaround: { ar: "أسبوع", en: "1 week" },
     standardSize: { ar: "بيتعمل مخصوص على مقاس معصم يدك", en: "Custom-made to your wrist size" },
     colors: [
-      { name: { ar: "أسود بلآلئ", en: "Black with Pearls" }, swatch: "#1A1A1A", images: ["images/wristlet-black-1.jpg", "images/wristlet-black-2.jpg"] },
-      { name: { ar: "كريمي سادة", en: "Cream, Plain" }, swatch: "#EDE6D6", images: ["images/wristlet-white-1.jpg"] }
+      { name: { ar: "أسود بلآلئ", en: "Black with Pearls" }, images: ["images/wristlet-black-1.jpg", "images/wristlet-black-2.jpg"] },
+      { name: { ar: "كريمي سادة", en: "Cream, Plain" }, images: ["images/wristlet-white-1.jpg"] }
     ]
   },
   {
@@ -610,13 +607,13 @@ const PRODUCTS = [
       en: "Handmade bow-shaped hair clip with stuffed cherries on a secure metal clip. Available individually or in a 3-piece set."
     },
     madeToOrder: true,
-    turnaround: { ar: "3 أيام للقطعة، وأسبوع لعرض الـ 3 قطع", en: "3 days for 1 piece, 1 week for 3 pieces" },
+    turnaround: { ar: "3 أيام للقطعة، وأسبوع لباكدج الـ 3 قطع", en: "3 days for 1 piece, 1 week for 3 pieces" },
     sizes: [
       { label: { ar: "قطعة واحدة", en: "1 Piece" }, dims: "مقاس قياسي" },
       { label: { ar: "عرض 3 قطع", en: "Set of 3" }, dims: "مقاس قياسي" }
     ],
     colors: [
-      { name: { ar: "بني (اللون الأساسي)", en: "Brown (Standard)" }, swatch: "#6B5A4A", images: ["images/bow.jpg"] }
+      { name: { ar: "اللون الأساسي (بني)", en: "Standard (Brown)" }, images: ["images/bow.jpg"] }
     ]
   },
   {
@@ -631,7 +628,7 @@ const PRODUCTS = [
     turnaround: { ar: "أسبوع لأكتر شوية (احتياطي)", en: "About 1 week or slightly more" },
     standardSize: { ar: "بحجم كف اليد تقريباً", en: "Approx. palm-sized" },
     colors: [
-      { name: { ar: "أزرق فاتح وبني", en: "Light Blue & Brown" }, swatch: "#A9C4DE", images: ["images/doll-bow-1.jpg"] }
+      { name: { ar: "أزرق فاتح وبني", en: "Light Blue & Brown" }, images: ["images/doll-bow-1.jpg"] }
     ]
   },
   {
@@ -646,7 +643,29 @@ const PRODUCTS = [
     turnaround: { ar: "أسبوع لأكتر شوية (احتياطي)", en: "About 1 week or slightly more" },
     standardSize: { ar: "بحجم كف اليد تقريباً", en: "Approx. palm-sized" },
     colors: [
-      { name: { ar: "أصفر فاتح", en: "Pale Yellow" }, swatch: "#F3E9B8", images: ["images/duck-1.jpg"] }
+      { name: { ar: "أصفر فاتح", en: "Pale Yellow" }, images: ["images/duck-1.jpg"] }
+    ]
+  },
+  {
+    id: "bunny-toy-01",
+    category: "kids",
+    name: { ar: "أرنوب كروشيه", en: "Crochet Bunny" },
+    description: {
+      ar: "أرنوب أميجورومي لطيف جداً بخيوط ناعمة وآمنة للأطفال، لابس سالوبيت أنيق. تقدري تطلبيه بتطريز اسم البيبي على السالوبيت عشان يكون هدية مميزة، أو تطلبيه سادة من غير اسم.",
+      en: "A cute and soft amigurumi bunny wearing lovely overalls, made with baby-safe yarn. Available with custom name embroidery or plain."
+    },
+    madeToOrder: true,
+    turnaround: { ar: "أسبوع لأكتر شوية (احتياطي)", en: "About 1 week or slightly more" },
+    standardSize: { ar: "طول 28 سم تقريباً", en: "Approx. 28 cm tall" },
+    colors: [
+      { 
+        name: { ar: "باسم البيبي", en: "With Baby's Name" }, 
+        images: ["images/ارنب (1).jpg", "images/ارنب (10).jpg", "images/ارنب (11).jpg"] 
+      },
+      { 
+        name: { ar: "سادة من غير اسم", en: "Without Name" }, 
+        images: ["images/ارنب (2).jpg", "images/ارنب (3).jpg", "images/ارنب (4).jpg", "images/ارنب (5).jpg", "images/ارنب (6).jpg", "images/ارنب (7).jpg", "images/ارنب (8).jpg", "images/ارنب (9).jpg"] 
+      }
     ]
   }
 ];
@@ -678,7 +697,7 @@ const TRANSLATIONS = {
     "filter.kids": "ألعاب ومستلزمات أطفال",
     "filter.accessories": "إكسسوارات وملابس",
     "product.viewDetails": "التفاصيل",
-    "product.colors": "الألوان المتاحة",
+    "product.colors": "الأشكال والألوان المتاحة",
     "product.sizes": "المقاسات المتاحة",
     "product.turnaround": "مدة التنفيذ والتسليم",
     "product.standardSize": "المقاس",
@@ -722,7 +741,7 @@ const TRANSLATIONS = {
     "filter.kids": "Baby & Kids",
     "filter.accessories": "Accessories & Clothes",
     "product.viewDetails": "Details",
-    "product.colors": "Available Colors",
+    "product.colors": "Available Styles & Colors",
     "product.sizes": "Available Sizes",
     "product.turnaround": "Turnaround Time",
     "product.standardSize": "Size",
@@ -801,7 +820,7 @@ function renderProducts() {
       <div class="product-card-body">
         <h3>${name}</h3>
         <div class="swatch-row">
-          ${product.colors.map(c => `<span class="mini-swatch" style="background:${c.swatch}" title="${c.name[currentLang]}"></span>`).join("")}
+          ${product.colors.map((c, idx) => `<span class="color-chip ${idx===0?'active':''}" style="font-size: 0.75rem; padding: 2px 8px; margin-inline-end: 4px;">${c.name[currentLang]}</span>`).join("")}
         </div>
         <button class="card-details-btn">${t("product.viewDetails")}</button>
       </div>
@@ -865,7 +884,7 @@ function renderModal() {
       <span class="modal-field-label">${t("product.colors")}</span>
       <div class="color-list">
         ${product.colors.map((c, i) => `
-          <button class="color-chip ${i === openColorIndex ? "active" : ""}" data-color-index="${i}" style="background:${c.swatch}"></button>
+          <button class="color-chip ${i === openColorIndex ? "active" : ""}" data-color-index="${i}">${c.name[currentLang]}</button>
         `).join("")}
       </div>
     </div>
@@ -875,8 +894,8 @@ function renderModal() {
 
   const selectedSizeText = product.sizes ? product.sizes[openSizeIndex].label[currentLang] : (currentLang === "ar" ? "مقاس موحد" : "Standard Size");
   const messageText = currentLang === "ar" 
-    ? `أهلاً حكاية وردة 🌸\nعايزة أستفسر عن سعر وتفاصيل القطعة دي:\nالمنتج: ${name}\nاللون: ${color.name[currentLang]}\nالمقاس: ${selectedSizeText}`
-    : `Hello A Rose's Tale 🌸\nI would like to inquire about the details for:\nProduct: ${name}\nColor: ${color.name[currentLang]}\nSize: ${selectedSizeText}`;
+    ? `أهلاً حكاية وردة 🌸\nعايزة أطلب القطعة دي:\nالمنتج: ${name}\nالشكل/اللون: ${color.name[currentLang]}\nالمقاس: ${selectedSizeText}`
+    : `Hello A Rose's Tale 🌸\nI would like to order:\nProduct: ${name}\nStyle/Color: ${color.name[currentLang]}\nSize: ${selectedSizeText}`;
   
   document.getElementById("modalContent").innerHTML = `
     <div class="modal-gallery">${imagesHTML}</div>
