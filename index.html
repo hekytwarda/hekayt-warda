@@ -525,7 +525,7 @@ html[data-lang="en"] .contact-inner p { font-weight: 400; }
     <div class="contact-inner">
       <h2 data-key="contact.heading">عايزة تطلبي أو تستفسري؟</h2>
       <p data-key="contact.sub">تواصلي معنا عبر إنستجرام بطلبك وهنرد عليكي بكافة التفاصيل وميعاد التسليم</p>
-      <a href="https://instagram.com/hekayt_warda" target="_blank" rel="noopener" class="instagram-btn">
+      <a href="https://ig.me/m/hekayt_warda" target="_blank" rel="noopener" class="instagram-btn">
         <i class="fab fa-instagram"></i>
         <span>hekayt_warda</span>
       </a>
@@ -563,7 +563,7 @@ const PRODUCTS = [
     standardSize: { ar: "مقاس موحد: ارتفاع 16 سم × عرض خارجي 26 سم (عرض داخلي 23 سم)", en: "One Size: 16cm H × 26cm outer width (23cm inner)" },
     colors: [
       { name: { ar: "أحمر وأبيض", en: "Red & White" }, swatch: "#A8283F", images: ["images/flower-bag-red-1.jpg"] },
-      { name: { ar: "بني ورمادي", en: "Brown & Grey" }, swatch: "#6B5A4A", images: ["images/flower-bag-brown-1.jpg", "images/flower-bag-brown-2.jpg"] },
+      { name: { ar: "بني ورمادي", en: "Brown" }, swatch: "#6B5A4A", images: ["images/flower-bag-brown-1.jpg", "images/flower-bag-brown-2.jpg"] },
       { name: { ar: "أسود", en: "Black" }, swatch: "#1A202C", images: ["images/flower-bag-black-1.jpg"] },
       { name: { ar: "أزرق وأبيض", en: "Blue & White" }, swatch: "#1F3A5F", images: ["images/flower-bag-blue-1.jpg"] }
     ]
@@ -578,7 +578,9 @@ const PRODUCTS = [
     },
     madeToOrder: true,
     turnaround: { ar: "أسبوع إلى أسبوعين", en: "1–2 weeks" },
-    standardSize: { ar: "مقاس السمول: طول 28 سم × عرض القاعدة 26 سم", en: "Small: 28cm H × 26cm Base" },
+    sizes: [
+      { label: { ar: "S", en: "S" }, dims: "28 × 26 cm" }
+    ],
     colors: [
       { name: { ar: "كريمي وبني وأحمر غامق", en: "Cream, Tan & Burgundy" }, swatch: "#8B3A3A", images: ["images/berry-bag-1.jpg", "images/berry-bag-2.jpg", "images/berry-bag-3.jpg"] }
     ]
@@ -608,7 +610,7 @@ const PRODUCTS = [
       en: "Handmade bow-shaped hair clip with stuffed cherries on a secure metal clip. Available individually or in a 3-piece set."
     },
     madeToOrder: true,
-    turnaround: { ar: "3 أيام للقطعة، وأسبوع لباكدج الـ 3 قطع", en: "3 days for 1 piece, 1 week for 3 pieces" },
+    turnaround: { ar: "3 أيام للقطعة، وأسبوع لعرض الـ 3 قطع", en: "3 days for 1 piece, 1 week for 3 pieces" },
     sizes: [
       { label: { ar: "قطعة واحدة", en: "1 Piece" }, dims: "مقاس قياسي" },
       { label: { ar: "عرض 3 قطع", en: "Set of 3" }, dims: "مقاس قياسي" }
@@ -637,7 +639,7 @@ const PRODUCTS = [
     category: "kids",
     name: { ar: "كتكوت كوكو", en: "Koko the Duck" },
     description: {
-      ar: "كتكوت صغير لطيف بخيوط ناعمة آمنة وبطاقية قابلة للفك، مناسب كلعبة صغيرة للأطفال.",
+      ar: "كتكوت صغير لطيف بخيوط ناعمة آمنة وبطاقية قابلة للفك، مناسب كلعبة للأطفال.",
       en: "A cute little duck crocheted with soft yarn and a removable hat, perfect as a small toy."
     },
     madeToOrder: true,
@@ -680,15 +682,15 @@ const TRANSLATIONS = {
     "product.sizes": "المقاسات المتاحة",
     "product.turnaround": "مدة التنفيذ والتسليم",
     "product.standardSize": "المقاس",
-    "product.orderBtn": "انسخي التفاصيل واطلبي من إنستجرام",
+    "product.orderBtn": "انسخي التفاصيل وافتحي شات إنستجرام",
     "reviews.heading": "بيقولوا عننا إيه؟",
     "reviews.sub": "سكرينات بنعتز بيها من رسايل عملائنا 🌸",
     "faq.heading": "أسئلة شائعة",
     "faq.sub": "تفاصيل مهمة عن الخامات، العناية بالمنتجات، والشحن",
     "faq.q1": "إزاي أحافظ على الشنط وأنظفها صح؟",
-    "faq.a1": "الشبك البلاستيك متين جداً ومش بيتأثر بالماية. الغسيل بيكون عن طريق تغطيس الشنطة في وعاء فيه ماية وشوية مسحوق غسيل سائل خفيف، وتمسحي عليها براحة جداً لمدة دقيقة، وبعدين تشطفيها بتغطيسها في ماية نضيفة مرتين تلاتة. أخيراً، حطيها على فوطة واضغطي عليها بالخفيف عشان تنزلي الماية الزيادة، وسيبيها على الفوطة تنشف في الهوا براحتها من غير عصر.",
+    "faq.a1": "الشبك البلاستيك متين جداً ومش بيتأثر بالماية. الغسيل بيكون عن طريق تغطيس الشنطة في وعاء فيه ماية وشوية مسحوق غسيل سائل خفيف (عشان ميسيبش أي ترسبات)، وتمسحي عليها براحة جداً لمدة دقيقة. بعدين تشطفيها بتغطيسها في ماية نضيفة مرتين تلاتة. أخيراً، حطيها على فوطة واضغطي عليها بالخفيف عشان تنزلي الماية الزيادة، وسيبيها على الفوطة تنشف في الهوا براحتها من غير عصر.",
     "faq.q2": "إزاي أغسل ألعاب الأطفال والملابس؟",
-    "faq.a2": "ألعاب ومستلزمات الأطفال مصنوعة بخيوط ناعمة جداً وآمنة ومقاومة للوبر. اغسليها يدوياً بماية باردة وشوية مسحوق غسيل سائل خفيف (عشان ميسيبش أي أثر)، من غير عصر خالص، وافرديها على سطح مسطح تنشف في الهوا عشان تحافظ على حشو الألياف وشكل الغرز.",
+    "faq.a2": "ألعاب ومستلزمات الأطفال مصنوعة بخيوط ناعمة جداً وآمنة ومقاومة للوبر. اغسليها يدوياً بماية باردة وشوية مسحوق غسيل سائل خفيف، من غير عصر خالص، وافرديها على سطح مسطح تنشف في الهوا عشان تحافظ على حشو الألياف وشكل الغرز.",
     "faq.q3": "إيه تفاصيل الشحن والتوصيل؟",
     "faq.a3": "موقعنا الأساسي في الإسكندرية، ومتاح توصيل واستلام مباشر داخل الإسكندرية بدون مصاريف شحن في نقاط متفق عليها! كما يتوفر شحن لجميع محافظات مصر بتكلفة الشحن العادية حسب منطقتك.",
     "faq.q4": "هل متاح تنفيذ أشكال وتصاميم خاصة مش معروضة؟",
@@ -724,7 +726,7 @@ const TRANSLATIONS = {
     "product.sizes": "Available Sizes",
     "product.turnaround": "Turnaround Time",
     "product.standardSize": "Size",
-    "product.orderBtn": "Copy Details & Open Instagram",
+    "product.orderBtn": "Copy Details & Open Instagram Chat",
     "reviews.heading": "What they say",
     "reviews.sub": "Client screenshots we cherish 🌸",
     "faq.heading": "FAQ",
@@ -873,8 +875,8 @@ function renderModal() {
 
   const selectedSizeText = product.sizes ? product.sizes[openSizeIndex].label[currentLang] : (currentLang === "ar" ? "مقاس موحد" : "Standard Size");
   const messageText = currentLang === "ar" 
-    ? `أهلاً حكاية وردة 🌸\nعايزة أطلب القطعة دي:\nالمنتج: ${name}\nاللون: ${color.name[currentLang]}\nالمقاس: ${selectedSizeText}`
-    : `Hello A Rose's Tale 🌸\nI would like to order:\nProduct: ${name}\nColor: ${color.name[currentLang]}\nSize: ${selectedSizeText}`;
+    ? `أهلاً حكاية وردة 🌸\nعايزة أستفسر عن سعر وتفاصيل القطعة دي:\nالمنتج: ${name}\nاللون: ${color.name[currentLang]}\nالمقاس: ${selectedSizeText}`
+    : `Hello A Rose's Tale 🌸\nI would like to inquire about the details for:\nProduct: ${name}\nColor: ${color.name[currentLang]}\nSize: ${selectedSizeText}`;
   
   document.getElementById("modalContent").innerHTML = `
     <div class="modal-gallery">${imagesHTML}</div>
@@ -917,10 +919,10 @@ function renderModal() {
         btnText.innerText = currentLang === "ar" ? "تم النسخ! جاري فتح إنستجرام..." : "Copied! Opening Instagram...";
         setTimeout(() => {
             btnText.innerText = originalText;
-            window.open("https://instagram.com/hekayt_warda", "_blank");
+            window.open("https://ig.me/m/hekayt_warda", "_blank");
         }, 1500);
     }).catch(err => {
-        window.open("https://instagram.com/hekayt_warda", "_blank");
+        window.open("https://ig.me/m/hekayt_warda", "_blank");
     });
   });
 }
